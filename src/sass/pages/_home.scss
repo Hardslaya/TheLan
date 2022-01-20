@@ -1,0 +1,36 @@
+.section-tournaments{
+    font-family: Lato;
+    padding: 10rem 0;
+    background-color: $color-white;
+    clip-path: polygon(0 0, 50% 5%,100% 0, 100% 100%, 0 100%);
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    @include respond(tab-land) {
+        clip-path: polygon(0 0, 50% 2%,100% 0, 100% 100%, 50% 102%, 0 100%);
+    }
+
+    @include respond(tab-port) {
+        clip-path: polygon(0 0, 50% 1%,100% 0, 100% 100%, 50% 101%, 0 100%);
+    }
+}
+
+.section-booking{
+    width: 60%;
+    margin: 0 auto;
+    background-color: rgb(92, 91, 91);
+    opacity: 80%;
+    border-radius: 10px;
+
+    @include respond(tab-land){
+        width: 100%;
+        border-radius: 0;
+        clip-path: polygon(0 5%, 100% 0, 100% 95%,0 100%);
+    }
+
+    @include respond(tab-port){
+        clip-path: polygon(0 3%, 100% 0, 100% 97%,0 100%);
+    }
+}

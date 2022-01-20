@@ -1,0 +1,16 @@
+.heading-secondary {
+    text-transform: uppercase;
+    letter-spacing: .5rem;
+    font-size: 5rem;
+    font-weight: 900;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-image: linear-gradient(to right, $color-purple-light 30%, $color-yellow);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: all 0.8s;
+
+        &:hover{
+            transform: scale(1.5);
+        }
+}

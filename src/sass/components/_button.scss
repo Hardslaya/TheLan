@@ -1,0 +1,23 @@
+.btn{
+    &__tournament{
+        align-self: center;
+
+        margin-bottom: 2rem;
+        
+        padding: 1rem 2rem;
+        border-radius: 2rem;
+        
+        text-transform: uppercase;
+        text-decoration: none;
+        letter-spacing: 0.2rem;
+        font-size: 1.5rem;
+        font-weight: 900;
+        background: linear-gradient(to left, $color-purple-light, $color-purple-dark);
+        color: white;
+
+        &:hover{
+            transform: translateY(-2px);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        }
+    }
+}

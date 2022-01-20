@@ -1,0 +1,105 @@
+.tournament-ad{ 
+    height: 35rem;
+    max-width: 25rem;
+    min-width: 25rem;
+    text-align: center;
+    position: relative;
+
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform .5s;
+
+    @include respond(tab-land) {
+        margin-bottom: 5rem;
+    }
+
+    &__image{
+        height: 100%;
+        width: 100%;
+        border-radius: 5px;
+        z-index: -10;
+        position: absolute;
+
+        @include respond(tab-land) {
+            opacity: 90%;
+            filter: blur(8px);
+        }
+    }
+
+    &__1{
+        background-image: url("../../img/lol.jpg");
+        background-size: cover;
+        background-position: 50% 50%;
+
+    }
+
+    &__2{
+        background-image: url("../../img/fortnite.png");
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+
+    &__3{
+        background-image: url("../../img/apex.jpg");
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+
+    &__4{
+        background-image: url("../../img/hearthstone.jpg");
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+
+    &__info{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        visibility: hidden;
+        transition: background-color 1s;
+
+        @include respond(tab-land){
+            visibility: visible;
+            opacity: 80%;
+        }
+
+        &--heading{
+            padding: 1rem;
+            letter-spacing: 0.1rem;
+            text-transform: uppercase;
+            font-size: 1.9rem;
+            background: linear-gradient(to right, $color-purple-dark, $color-purple-light);
+            color: white;
+            opacity: 100%;
+        }
+
+        &--text{
+            text-align: center;
+            letter-spacing: 0.2rem;
+            font-size: 2rem;
+            padding: 2rem;
+            color: black;
+        }  
+    }
+
+    &__info hr{
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    &:hover{
+        transform: translateY(-1rem);
+    }
+
+    &:hover &__image{
+        filter: blur(8px);
+    }
+
+    &:hover &__info{
+        visibility: visible;
+        color: black;
+        background-color: white;
+        opacity: 70%;
+    } 
+}
