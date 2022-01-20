@@ -1,4 +1,4 @@
-import Tournament from './Tournaments/Tournament.js'
+import Tournament from './Home/Tournaments/Tournament.js'
 
 function App() {
 
