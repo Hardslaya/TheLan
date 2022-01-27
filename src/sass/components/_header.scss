@@ -1,0 +1,50 @@
+.main-header {
+    height: 10rem;
+    background-color: rgb(70, 68, 68);
+    letter-spacing: 0.3rem;
+    border-bottom: 2px solid grey;
+
+    display: flex;
+    justify-content: space-between;
+
+
+    .brand{
+        color: white;
+        font-size: 2rem;
+        font-weight: 900;
+        margin-right: auto;
+        margin-left: 1.5rem;
+
+        align-self: center;
+    }
+
+    & .user-nav {     
+        height: 100%;
+        flex: 0 0 55%;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+
+        &__links{
+            flex: 0 0 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+
+            &--link{
+                height: 100%;
+                padding: 0 2rem;
+                flex: 0 0 30%;
+
+                text-decoration: none;
+                text-transform: uppercase;
+                font-size: 1.5rem;
+
+                &:hover{
+                    background-color: rgb(37, 36, 36);
+                }
+            }
+        }
+    }
+}

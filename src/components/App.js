@@ -1,4 +1,5 @@
-import Home from './Home/Tournaments/Tournament'
+import Home from './Home/Home'
+import Nav from './Nav'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Restaurant from './Restaurant/Restaurant.js';
 
@@ -7,11 +8,10 @@ function App() {
   return (
     <>
     <Router>
-      <Link to={`/`}>Home</Link>
-      <Link to={`/Restaurant`}>Restaurante</Link>
+      <Nav />
 
       <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" exact element={<Home />} />
           <Route path="/Restaurant" element={<Restaurant />} />
       </Routes>
     </Router>

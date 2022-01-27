@@ -1,6 +1,14 @@
+import Tournament from "./Tournaments/Tournament";
 
 const Home = () => {
     return (
-        <div></div>
+        <>
+        <div className="section-tournaments">
+            <Tournament />
+        </div>
+        
+        </>
     );
 }
+
+export default Home;
