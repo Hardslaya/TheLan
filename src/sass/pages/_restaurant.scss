@@ -1,0 +1,418 @@
+.header {
+    height: 10rem;
+    background-color: rgb(70, 68, 68);
+    letter-spacing: 0.3rem;
+    border-bottom: 2px solid grey;
+
+    display: flex;
+    justify-content: space-between;
+
+    .logo{
+        margin: 1rem;
+        border: 1px solid black;
+        border-radius: 50%;
+        overflow: hidden;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &--image{        
+            width: 7rem;
+            height: 100%;
+        }
+    }
+
+    .brand{
+        color: white;
+        font-size: 2rem;
+        font-weight: 900;
+        margin-right: auto;
+        margin-left: 1.5rem;
+
+        align-self: center;
+    }
+
+    & .user-nav {     
+        height: 100%;
+        flex: 0 0 55%;
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+
+        &__links,
+        &__social-media{
+            flex: 0 0 60%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            color: white;
+
+            &--link{
+                height: 100%;
+                padding: 0 2rem;
+                flex: 0 0 30%;
+
+                text-decoration: none;
+                text-transform: uppercase;
+                font-size: 1.5rem;
+
+                &:hover{
+                    background-color: rgb(37, 36, 36);
+                }
+
+                &.drinks,
+                &.hotel{
+                    position: relative;
+
+                    & .drop-down-menu{
+                        visibility: hidden;
+                        position: absolute;
+                        top: 100%;
+                        width: 100%;
+                        height: 100%;
+                        background-color: inherit;
+                        list-style: none;
+                        font-size: 1.5rem;
+
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: stretch;
+                        align-items: stretch;
+
+                        & li{
+                            flex: 1;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            &:hover{
+                                background-color: purple;
+                            }
+                        }
+                    }
+
+                    &::after{
+                        content: "";
+                        border: 0.3em solid;
+                        border-color: purple transparent transparent;
+                        margin-left: .3em;
+                        align-self: center;
+                    }
+
+                    &:hover .drop-down-menu{
+                        visibility: visible;
+                    }
+                }
+            }
+        }
+
+        &__social-media{
+            flex: 0 0 20%;
+            margin-right: 1rem;
+
+            @include respond(tab-land){
+                display: none;
+            }
+        }
+
+        @include respond(tab-port){
+            display: none;
+        }
+    }
+}
+
+.hero {
+    background-color: white;
+    color: black;
+    height: 10rem;
+    font-size: 2.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.sections{
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    &:not(:last-of-type){
+        margin-bottom: 10rem;
+    }
+
+    &__meals{
+        height: 60rem;
+        background-image: url("../../img/salon3.jpg");
+        background-position: center;
+        background-size: cover;
+        
+        display: flex;
+        flex-direction: row;
+
+        &--info{
+            height: 50%;
+            flex: 0 0 50%;
+            align-self: flex-start;
+            background-color: hsla(0, 0%, 0%, 0.7);
+            color: white;
+            font-size: 2rem;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            & .text{
+                width: 50%;
+            }
+
+            & .btn{
+                align-self: flex-start;
+                margin-top: 1.5rem;
+                margin-left: 25%;
+                padding: 0.5rem 1rem;
+            }
+
+            & .arrow::after{
+                margin-left: .7rem;
+                content: "";
+                display: inline-block;
+                border: .5rem solid;
+                border-color: transparent transparent transparent currentColor;
+            } 
+        }
+        
+        &--image{
+            height: 50%;
+            flex: 0 0 50%;
+            align-self: flex-end;
+            background-color: hsla(0, 0%, 0%, 0.7); 
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            & .circle{
+                position: relative;
+                perspective: 150rem;
+                -moz-perspective: 150rem;
+                width: 20rem;
+                height: 20rem;
+
+                &__side{
+                    border-radius: 50%;
+                    overflow: hidden;
+                    border: 2px solid white;
+                    height: 100%;
+                    transition: transform .8s ease;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    backface-visibility: hidden;
+
+                    &--front{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        & img{
+                            width: 30rem;
+                            height: 20rem;
+                        }
+                    }
+                    &--back{
+                        background-color: rgba(245, 222, 179, 0.5);
+                        color: black;
+                        transform: rotateX(180deg);
+                        font-size: 2.5rem;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        & span{
+                            text-align: center;
+                        }
+                    }
+                }
+
+                &:hover .circle__side--front {
+                    transform: rotateX(-180deg);
+                }
+                &:hover .circle__side--back {
+                    transform: rotateX(0);
+                }
+            }                        
+        }
+    }
+    
+    &__drinks{
+        position: relative;
+        height: 40rem;
+        overflow: hidden;
+        color: rgba(255, 255, 255, 0.5);
+
+        background-color: black;
+
+        &--image{
+            width: 100%;
+        }
+
+        &--text{
+            position: absolute;
+            top: 13rem;
+            left: 10rem;
+            font-size: 4rem;
+        }
+
+        & .square{
+            position: absolute;
+            width: 11rem;
+            display: flex;
+            justify-content: space-between;
+            bottom: 1rem;
+            &--link{
+                width: 15px;
+                height: 15px;
+                background-color: rgba(0, 0, 0, 0.5);
+                cursor: pointer;
+
+                & .selected,
+                &:hover{
+                    background-color: rgba(255, 255, 255, 0.5);
+                }
+            }
+        }
+
+        &__arrow{
+            position: absolute;
+
+            &--right{
+                top: 18rem;
+                right: 0;
+            }
+
+            &--left{
+                top: 18rem;
+                left: 0;
+            }       
+        }
+
+        & .arrow--left::after{
+            content: "";
+            display: inline-block;
+            border: 2rem solid;            
+            border-color: transparent currentColor transparent transparent;
+        } 
+
+        & .arrow--right::after{
+            content: "";
+            display: inline-block;
+            border: 2rem solid;
+            border-color: transparent transparent transparent currentColor;
+        }
+        
+        & a:hover .arrow--right::after{
+            border-color: transparent transparent transparent white;
+            transform: translateX(2px);
+            cursor: pointer;
+        }
+
+        & a:hover .arrow--left::after{
+            border-color: transparent white transparent transparent;
+            transform: translateX(-2px);
+            cursor: pointer;
+        }
+    }
+
+    &__takeaway{
+        height: 15rem;
+        background-color: rgb(199, 198, 198);
+        color: black;
+        font-size: 4rem;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & .more{
+            margin: 2rem;
+        }
+    }
+}
+
+.itemsSelection{
+    background-color: white;
+    height: 75rem;
+    width: 80%;
+    margin: 0 auto 10rem;
+    padding: 10rem 0;
+    font-size: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    &__course{
+        width: auto;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        & > p{
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid grey;
+            font-size: 3rem;
+        }
+
+        &__dish{
+            align-self: flex-end;
+
+            margin-bottom: 1rem;
+
+            & > *{
+                margin-right: 1.5rem;
+            }
+
+            &--name,
+            &--price{
+                margin-right: 5rem;
+            }
+
+            & .btn,
+            &--quantity{
+                background-color: rgba(245, 179, 242, 0.5);
+                color: black;
+                padding: 1rem 1.4rem;
+                border-radius: 50%;
+                font-size: 1.5rem;
+            }
+
+            & .btn{
+                background-color: purple;
+                color: white;
+                cursor: pointer;
+
+                &:hover{
+                    background-color: rgba(117, 30, 113, 0.5);
+                    color: black;
+                }
+            }
+        }
+    }
+}
+
+.footer{
+    height: 20rem;
+    background-color: black;
+}
