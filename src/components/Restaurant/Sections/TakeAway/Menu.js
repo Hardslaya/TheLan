@@ -26,8 +26,6 @@ const reducer = (state, action) => {
 
 const Menu = (props) => {
 
-    let number = -1;
-
     let initialCountArray = new Array(props.menu.flat().length).fill(0);
 
     const [state, dispatch] = useReducer(reducer, initialCountArray);
@@ -37,7 +35,6 @@ const Menu = (props) => {
     }
     
     function incCount(number){
-        console.log("...............")
         dispatch({ type: ACTIONS.INCREMENT, payload: number})
     }
 
@@ -50,14 +47,13 @@ const Menu = (props) => {
                             <p>{item}</p>
                             {
                                 props.menu[index].flat().map((meal) => {
-                                    number +=1;
                                     return ( 
                                         <div key={meal.name} className="itemsSelection__course__dish">
                                             <Info meal={meal} 
                                             incCount={incCount}
                                             decCount={decCount}
-                                            count={state[number]}
-                                            number={number}/>
+                                            count={state[meal.objectId]}
+                                            />
                                         </div>
                                     );
                                 })

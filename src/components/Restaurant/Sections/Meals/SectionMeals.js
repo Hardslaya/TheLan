@@ -1,11 +1,11 @@
 import Info from "./Info.js";
 import Image from "./Image.js";
 
-const SectionMeals = (props) => {
+const SectionMeals = ({ menu }) => {
     return (
         <section className="sections sections__meals">
                 <Info />
-                <Image meals={props.meals}/>
+                <Image menu={menu}/>
         </section>
     );
 }
