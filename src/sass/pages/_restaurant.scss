@@ -378,15 +378,16 @@
 .itemsSelection{
     background: url("../../img/tableImage.jpg");
     background-size: cover;
-    height: 75rem;
+    height: 90rem;
     width: 100%;
 
     &__main{
-        background-color: white;
-        height: 75rem;
+        background-color: rgba(255, 255, 255, 0.9);
+        color: black;
+        height: 90rem;
         width: 80%;
         margin: 0 auto 10rem;
-        padding: 10rem 0;
+        padding: 5rem 0;
         font-size: 2rem;
     
         display: flex;
@@ -439,7 +440,8 @@
 //CART
 
 .cart{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
     width: 30rem;
     position: fixed;
     top: 1.5rem;
