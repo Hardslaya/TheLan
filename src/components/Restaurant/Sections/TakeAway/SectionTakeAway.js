@@ -31,7 +31,7 @@ const SectionTakeAway = ({ menu }) => {
 
     const [state, dispatch] = useReducer(reducer, JSON.parse(localStorage.getItem('order')) || []);
 
-    const [show, setShow] = useState(localStorage.getItem('isCartFilled') || false);
+    const [show, setShow] = useState(false);
 
     const [ isCartFilled, setIsCartFilled ] = useState(localStorage.getItem('isCartFilled') || false);
 
@@ -51,11 +51,9 @@ const SectionTakeAway = ({ menu }) => {
     
     updateCart();
 
-    console.log(isCartFilled, show);
-
-    if(show === true) return (
+    if(show) return (
         <>
-        {isCartFilled === true &&
+        {isCartFilled &&
             <Cart 
                 order={JSON.parse(localStorage.getItem('order'))}
                 setShow={setShow} 
