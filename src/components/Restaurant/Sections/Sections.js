@@ -1,6 +1,7 @@
 import SectionMeals from "./Meals/SectionMeals.js";
 import SectionDrinks from "./Drinks/SectionDrinks.js";
 import SectionTakeAway from "./TakeAway/SectionTakeAway.js";
+import { useState } from "react";
 
 const starters = [
     {
@@ -52,6 +53,7 @@ const beverages = [
 const menu = [starters, mainCourse, dessert, beverages];
 
 const Sections = () => {
+    const [ db, setDb ] = useState([]);
     return (
         <main className="sections">
             <SectionMeals menu={menu}/>
