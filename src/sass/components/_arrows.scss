@@ -1,0 +1,11 @@
+.arrows{
+    display: flex;
+    justify-content: center;
+    margin-top: 10rem;
+    position: relative;//obligado por oscurecer fondo
+
+    & img{
+        width: 5rem;
+        height: 5rem;
+    }
+}
