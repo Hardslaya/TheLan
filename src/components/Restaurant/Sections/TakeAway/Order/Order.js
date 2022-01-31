@@ -9,7 +9,6 @@ const ACTIONS = {
 }
 
 const reducer = (state, action) => {
-    console.log(action.payload);
     switch (action.type){
         case ACTIONS.INCREMENT:
             return state.map((item) => {
@@ -34,10 +33,10 @@ const Order = () => {
 
     function updateTotal(price, count, operation){
         let newTotal = 0;
-        console.log(newTotal);
         if(operation === "delete") newTotal = localStorage.getItem('total') - price * count;
         else if(operation === "inc") newTotal = Number(localStorage.getItem('total')) + price;
-        else newTotal = Number(localStorage.getItem('total')) - price;
+        else if(operation === "dec" && count - 1 > 0) newTotal = Number(localStorage.getItem('total')) - price;
+        else newTotal = Number(localStorage.getItem('total'));
         localStorage.setItem('total', newTotal.toFixed(2));
         if(newTotal <= 0) localStorage.setItem('isCartFilled', false);
     }

@@ -34,7 +34,7 @@ const mainCourse = [
 
 const dessert = [
     {
-        name: "Macarones",
+        name: "Macarons",
         url: "macaron.jpg",
         price: 4.99,
         objectId: 4
