@@ -42,7 +42,8 @@ const Cart = ({ order, setShow, show }) => {
             }
             <span className="cart__total">Total: {total}€</span>
             <Link to="/Order">
-            <span className="btn--tournament">Ir a caja</span></Link>
+                <span className="btn--tournament">Ir a caja</span>
+            </Link>
         </div>
     );
 }

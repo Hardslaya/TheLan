@@ -9,43 +9,54 @@ const ACTIONS = {
 }
 
 const reducer = (state, action) => {
+    console.log(action.payload);
     switch (action.type){
         case ACTIONS.INCREMENT:
-            return state.map((value , index) => {
-                if(index === action.payload) return value += 1;
-                return value;
+            return state.map((item) => {
+                if(item.name === action.payload) return {...item, count: item.count + 1};
+                return item;
             });
         case ACTIONS.DECREMENT:
-            return state.map((value,index) => {
-                if(index === action.payload && (value - 1) >= 0) return value -= 1;
-                return value;
+            return state.map((item) => {
+                if(item.name === action.payload && (item.count - 1) > 0) return {...item, count: item.count - 1};
+                return item;
             });
         case ACTIONS.DELETE_DISH:
-            return state.filter(item => item.name !== action.payload)
-            default:
+            return state.filter(item => item.name !== action.payload);
+        default:
                 return state;
     }
 }
-                {/*<span className="btn btn-decrease" onClick={() => decCount(meal.objectId)}>-</span>
-            <span className="itemsSelection__course__dish--quantity">{count[objectId]}</span>
-            <span className="btn btn-increase" onClick={() => incCount(meal.objectId)}>+</span>*/}
 
 const Order = () => {
 
     const [state, dispatch] = useReducer(reducer, JSON.parse(localStorage.getItem('order')));
 
-    function decCount(number){
-        dispatch({ type: ACTIONS.DECREMENT, payload: number})
+    function updateTotal(price, count, operation){
+        let newTotal = 0;
+        console.log(newTotal);
+        if(operation === "delete") newTotal = localStorage.getItem('total') - price * count;
+        else if(operation === "inc") newTotal = Number(localStorage.getItem('total')) + price;
+        else newTotal = Number(localStorage.getItem('total')) - price;
+        localStorage.setItem('total', newTotal.toFixed(2));
+        if(newTotal <= 0) localStorage.setItem('isCartFilled', false);
+    }
+
+    function decCount(name, price, count){
+        const operation = "dec";
+        updateTotal(price, count, operation);
+        dispatch({ type: ACTIONS.DECREMENT, payload: name})     
     }
     
-    function incCount(number){
-        dispatch({ type: ACTIONS.INCREMENT, payload: number})
+    function incCount(name, price, count){
+        const operation = "inc";
+        updateTotal(price, count, operation);
+        dispatch({ type: ACTIONS.INCREMENT, payload: name})
     }
 
     function deleteItem(name, price, count){
-        const newTotal = localStorage.getItem('total') - price * count;
-        localStorage.setItem('total', newTotal.toFixed(2));
-        if(newTotal <= 0) localStorage.setItem('isCartFilled', false);
+        const operation = "delete";
+        updateTotal(price, count, operation);
         dispatch({ type: ACTIONS.DELETE_DISH, payload: name});
     }
 
@@ -68,9 +79,9 @@ const Order = () => {
                         <span className="order__main__item--name">{item.name}</span>
                         <span className="order__main__item--price">{item.price}€</span>
                         <span className="order__main__item--sign">x</span>
-                        <span className="btn__count btn__count--add" onClick={() => console.log(1)/*() => decCount(meal.objectId)*/}>-</span>          
+                        <span className="btn__count btn__count--add" onClick={() => decCount(item.name, item.price, item.count)}>-</span>          
                         <span className="btn__count">{item.count}</span>
-                        <span className="btn__count btn__count--add" onClick={() => console.log(1)/*() => incCount(meal.objectId)*/}>+</span>
+                        <span className="btn__count btn__count--add" onClick={/*() => console.log(1)*/() => incCount(item.name, item.price, item.count)}>+</span>
                         <span className="order__main__item--sign">=</span>
                         <span className="order__main__item--priceSum">{item.price * item.count}€</span>
                         <img className="order__main__item--delete" src={trashCan} alt="deleteIcon" onClick={() => deleteItem(item.name, item.price, item.count)}/>
