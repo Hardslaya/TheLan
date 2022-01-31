@@ -39,7 +39,7 @@ function Card(){
                     <p className="tournament-ad__info--text">{index.prize}</p><hr />
                     <p className="tournament-ad__info--text">{index.places}</p><hr />
                     <p className="tournament-ad__info--text">{index.price}</p>
-                    <a className="btn__tournament" href='.'>{index.button}</a>
+                    <a className="btn--tournament" href='.'>{index.button}</a>
                 </div>
             )
         })}

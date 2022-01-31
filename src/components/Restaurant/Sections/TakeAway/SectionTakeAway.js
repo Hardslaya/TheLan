@@ -1,13 +1,11 @@
 import Button from "./Button";
-import Menu from "./Menu";
-import Cart from "./Cart";
-import { useReducer, useState } from "react";
-
-let isOrderReady = false;
+import Menu from "./Menu/Menu";
+import Cart from "./Order/Cart";
+import { useEffect, useReducer, useState } from "react";
 
 const ACTIONS = {
     ADD_DISH: "add_dish",
-    ADD_COUNT: "add_count"
+    ADD_COUNT: "add_count",
 }
 
 function reducer(state, action){
@@ -21,40 +19,57 @@ function reducer(state, action){
                 return item;
             })
         default:
-            console.log(state);
+            return state;
     }
 }
 
-function newDish(name){
-    return { name: name, count: 1};
+function newDish(payload){
+    return { name: payload.name, price: payload.price, count: 1};
 }
 
 const SectionTakeAway = ({ menu }) => {
 
-    const [state, dispatch] = useReducer(reducer, []);
+    const [state, dispatch] = useReducer(reducer, JSON.parse(localStorage.getItem('order')) || []);
 
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(localStorage.getItem('isCartFilled') || false);
 
-    const handleClick = (dish) => {
-        let bool = true;
-        state.map(item => {
-            console.log(item.name === dish)
-            if(item.name === dish) bool = false;
-        })
-        isOrderReady = true;
-        bool ? dispatch({ type: ACTIONS.ADD_DISH, payload: dish}) : dispatch({ type: ACTIONS.ADD_COUNT, payload: dish});
+    const [ isCartFilled, setIsCartFilled ] = useState(localStorage.getItem('isCartFilled') || false);
+
+    function updateCart(){
+        localStorage.setItem('order', JSON.stringify(state));
     }
 
-    if(show) return (
+    const handleClick = (name, price) => {
+        let isDishNew = true;
+        state.filter(item => {
+            if(item.name === name) isDishNew = false;
+        })
+        isDishNew ? dispatch({ type: ACTIONS.ADD_DISH, payload: {name, price}}) : dispatch({ type: ACTIONS.ADD_COUNT, payload: name});
+        localStorage.setItem('isCartFilled', true);
+        setIsCartFilled(true);
+    }
+    
+    updateCart();
+
+    console.log(isCartFilled, show);
+
+    if(show === true) return (
         <>
-        { isOrderReady && <Cart menu={menu} order={state}/> }
-        
+        {isCartFilled === true &&
+            <Cart 
+                order={JSON.parse(localStorage.getItem('order'))}
+                setShow={setShow} 
+                show={show}
+            />
+        }
+                
         <Button setShow={setShow} show={show}/>
-        <Menu menu={menu} handleClick={handleClick}/>
+        <Menu menu={menu} handleClick={handleClick} />
         </>
     )
     else return (
         <>
+        { localStorage.getItem('total') > 0 && <span className="burguerCart"><img src={require("../../../../img/iconCart.png")} onClick={() => setShow(true)}/></span> }
         <Button setShow={setShow} show={show}/>
         </>
     );

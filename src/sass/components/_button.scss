@@ -1,5 +1,5 @@
 .btn{
-    &__tournament{
+    &--tournament{
         align-self: center;
 
         margin-bottom: 2rem;
@@ -87,6 +87,36 @@
 
         &:hover .text::before, &:hover .text::after{
             transition-delay: 0s;
+        }
+    }
+
+    &__count{
+        background-color: rgba(245, 179, 242, 0.5);
+        color: black;
+        padding: 1rem 2rem;
+        border-radius: 50%;
+        font-size: 1.6rem;
+
+        &--add{
+            background-color: purple;
+            color: white;
+            cursor: pointer;
+
+            &:hover{
+                background-color: rgba(117, 30, 113, 0.5);
+                color: black;
+            }
+        }
+    }
+
+    &--add{
+        background-color: purple;
+        color: white;
+        cursor: pointer;
+
+        &:hover{
+            background-color: rgba(117, 30, 113, 0.5);
+            color: black;
         }
     }
 }

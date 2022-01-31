@@ -15,16 +15,17 @@ const Image = ({ menu }) => {
             setRandomDish(Math.floor(Math.random() * (menu[randomCourse].length -1)))
             console.log()
         },6000);
+        return clearInterval(interval);
     }, [])
 
     return (
         <div className="sections__meals--image">
             <div className="circle">
                 <div className="circle__side circle__side--front">
-                    <img src={require(`./../../../../img/${menu[randomCourse][randomDish].url}`)} alt="Plato" />
+                    <img src={require(`./../../../../img/${menu[0][0].url}`)} alt="Plato" />
                 </div>
                 <div className="circle__side circle__side--back">
-                    <span>{menu[randomCourse][randomDish].name}</span>
+                    <span>{menu[0][0].name}</span>
                 </div>
             </div>
         </div> 
