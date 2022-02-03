@@ -1,0 +1,115 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//CART
+
+.cart{
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+    width: 30rem;
+    position: fixed;
+    top: 1.5rem;
+    right: 1rem;
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 1.5rem;
+    border: 1px solid black; //cambiar por un box shadow
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+
+
+    &--burguer{
+        color: white;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+
+                
+        &::before,
+        &::after{
+            content: "";
+            display: inline-block;
+            border-bottom: 1px solid currentColor;
+            width: 2rem;
+            position: inherit;
+            top: 2rem;
+            right: 1rem;
+        }
+        
+        &::before{
+            transform: rotate(40deg);
+        }
+                
+        &::after{
+            transform: rotate(-40deg);
+        }
+
+        &:hover{
+            cursor: pointer;
+            background-color: rgba(209, 161, 209, 0.514)
+        }
+    }
+
+    &--title{
+        background-color: purple;
+        color: white;
+        font-size: 3rem;
+        padding: 1rem;
+    }
+
+    &__order{
+        padding: 1rem;
+
+        display: flex;
+        justify-content: space-around;
+
+        &--name{
+            
+        }
+
+        &--count{
+
+        }
+    }
+
+    &__total{
+        font-size: 2rem;
+    }
+
+    & a{
+        margin: 2rem;
+        font-size: 1.5rem;
+    }
+}
+
+.burguerCart{
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    height: 7rem;
+    width: 7rem;
+    background: linear-gradient(to right, purple, hotpink);
+    border-radius: 50%;
+    transition: all .5s;
+
+    & > img{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 5rem;
+        height: 5rem;
+    }
+
+    &:hover{
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+}

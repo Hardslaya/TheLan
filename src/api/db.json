@@ -1,31 +1,94 @@
 {
-    "posts": [{
-        "id": 1,
-        "name": "Satheesh",
-        "email": "Sat@mail.com",
-        "adderss": "South street"
-    }, {
-        "id": 2,
-        "name": "John",
-        "email": "john@mail.com",
-        "adderss": "North street"
-    }, {
-        "id": 3,
-        "name": "Robert",
-        "email": "robert@mail.com",
-        "adderss": "East street"
-    }, {
-        "id": 4,
-        "name": "Mani",
-        "email": "mani@mail.com",
-        "adderss": "West street"
-    }],
-    "comments": [{
-        "id": 1,
-        "body": "some comment",
-        "postId": 1
-    }],
-    "profile": {
-        "name": "typicode"
+  "menu": {
+    "starters": [
+      {
+        "name": "Ensalada de aguacate",
+        "url": "ensaladaAguacate.jpg",
+        "price": 11.99
+      },
+      {
+        "name": "Sopa primavera",
+        "url": "sopaPrimavera.jpg",
+        "price": 8.99
+      },
+      {
+        "name": "Lettera Trattoria",
+        "url": "letteraTrattoria.jpg",
+        "price": 7.99
+      }
+    ],
+    "mainCourse": [
+      {
+        "name": "Secreto a la naranja",
+        "url": "secretoNaranja.jpg",
+        "price": 12.99
+      },
+      {
+        "name": "Pote gallego",
+        "url": "poteGallego.jpg",
+        "price": 10.99,
+        "objectId": 3
+      },
+      {
+        "name": "Merluza con aguacate",
+        "url": "merluza.jpg",
+        "price": 11.99
+      }
+    ],
+    "dessert": [
+      {
+        "name": "Macarons",
+        "url": "macaron.jpg",
+        "price": 4.99
+      },
+      {
+        "name": "Tiramisú",
+        "url": "tiramisu.jpg",
+        "price": 6.99
+      },
+      {
+        "name": "Mousse de chocolate",
+        "url": "mousse.jpg",
+        "price": 8.99
+      }
+    ],
+    "beverages": [
+      {
+        "name": "Botella de agua",
+        "price": 3.99
+      },
+      {
+        "name": "Copa de vino tinto",
+        "price": 5.99
+      },
+      {
+        "name": "Copa de vino blanco",
+        "price": 5.99
+      },
+      {
+        "name": "Jarra de cerveza",
+        "price": 4.99
+      }
+    ]
+  },
+  "banners": [
+    {
+      "url": "wine.jpeg",
+      "alt": "wine",
+      "text": "Disfruta de nuestros vinos de las mejores reservas"
+    },
+    {
+      "url": "cocteles.jpg",
+      "alt": "cocktails",
+      "text": "Atrévete a probar nuestros nuevos cócteles de Juego de Tronos"
+    },
+    {
+      "url": "hidromiel.jpg",
+      "alt": "mead",
+      "text": "Disfruta la bebida de los vikingos"
     }
+  ],
+  "prueba": {
+    "45878": []
+  }
 }

@@ -1,6 +1,6 @@
 import Home from './Home/Home'
 import Nav from './Nav'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Restaurant from './Restaurant/Restaurant';
 import Order from './Restaurant/Sections/TakeAway/Order/Order'
 

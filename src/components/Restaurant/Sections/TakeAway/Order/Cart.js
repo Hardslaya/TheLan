@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 
-const Cart = ({ order, setShow, show }) => {
+const Cart = ({ order, setShow, total, setTotal }) => {
     
     useEffect(() => {
         addTotal(order);
     }, [order])
-
-    const [ total, setTotal ] = useState(0);
 
     function addTotal(order){
         let newTotal = 0;
@@ -16,12 +14,6 @@ const Cart = ({ order, setShow, show }) => {
         })
         setTotal(newTotal.toFixed(2));
     }
-
-    function updateCart(){
-        localStorage.setItem('total', total);
-    }
-
-    updateCart()
 
     return (
         <div className="cart">
@@ -41,7 +33,7 @@ const Cart = ({ order, setShow, show }) => {
             })        
             }
             <span className="cart__total">Total: {total}€</span>
-            <Link to="/Order">
+            <Link to="/Order" >
                 <span className="btn--tournament">Ir a caja</span>
             </Link>
         </div>
