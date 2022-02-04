@@ -22,7 +22,7 @@ const Cart = ({ order, setShow, total, setTotal }) => {
             {order.map((item) => {
                 return (
                 <div className="cart__order" key={item.name}>
-                    <span className="cart__order--name">{item.name}</span>
+                    <span className="cart__order--name"><b>{item.name}</b></span>
                     <span className="cart__order--price">{item.price}€</span>
                     <span className="cart__order--sign">x</span>
                     <span className="cart__order--count">{item.count}</span>

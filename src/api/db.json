@@ -4,52 +4,84 @@
       {
         "name": "Ensalada de aguacate",
         "url": "ensaladaAguacate.jpg",
-        "price": 11.99
+        "price": 11.99,
+        "filters": [
+          "lactose",
+          "gluten",
+          "vegetarian"
+        ]
       },
       {
         "name": "Sopa primavera",
         "url": "sopaPrimavera.jpg",
-        "price": 8.99
+        "price": 8.99,
+        "filters": [
+          "gluten",
+          "vegetarian"
+        ]
       },
       {
         "name": "Lettera Trattoria",
         "url": "letteraTrattoria.jpg",
-        "price": 7.99
+        "price": 7.99,
+        "filters": []
       }
     ],
     "mainCourse": [
       {
         "name": "Secreto a la naranja",
         "url": "secretoNaranja.jpg",
-        "price": 12.99
+        "price": 12.99,
+        "filters": [
+          "gluten"
+        ]
       },
       {
         "name": "Pote gallego",
         "url": "poteGallego.jpg",
         "price": 10.99,
-        "objectId": 3
+        "objectId": 3,
+        "filters": [
+          "gluten",
+          "vegetarian"
+        ]
       },
       {
         "name": "Merluza con aguacate",
         "url": "merluza.jpg",
-        "price": 11.99
+        "price": 11.99,
+        "filters": [
+          "lactose",
+          "gluten"
+        ]
       }
     ],
     "dessert": [
       {
         "name": "Macarons",
         "url": "macaron.jpg",
-        "price": 4.99
+        "price": 4.99,
+        "filters": [
+          "vegetarian"
+        ]
       },
       {
         "name": "Tiramisú",
         "url": "tiramisu.jpg",
-        "price": 6.99
+        "price": 6.99,
+        "filters": [
+          "vegetarian"
+        ]
       },
       {
         "name": "Mousse de chocolate",
         "url": "mousse.jpg",
-        "price": 8.99
+        "price": 8.99,
+        "filters": [
+          "lactose",
+          "gluten",
+          "vegetarian"
+        ]
       }
     ],
     "beverages": [
@@ -75,20 +107,31 @@
     {
       "url": "wine.jpeg",
       "alt": "wine",
-      "text": "Disfruta de nuestros vinos de las mejores reservas"
+      "text": "'Disfruta de nuestros vinos de las mejores reservas'"
     },
     {
       "url": "cocteles.jpg",
       "alt": "cocktails",
-      "text": "Atrévete a probar nuestros nuevos cócteles de Juego de Tronos"
+      "text": "'Atrévete a probar nuestros nuevos cócteles de Juego de Tronos'"
     },
     {
       "url": "hidromiel.jpg",
       "alt": "mead",
-      "text": "Disfruta la bebida de los vikingos"
+      "text": "'Disfruta la bebida del norte'"
     }
   ],
   "prueba": {
-    "45878": []
+    "45878": [
+      {
+        "name": "Sopa primavera",
+        "price": 8.99,
+        "count": 1
+      },
+      {
+        "name": "Copa de vino tinto",
+        "price": 5.99,
+        "count": 1
+      }
+    ]
   }
 }

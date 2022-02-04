@@ -1,5 +1,7 @@
 let cardNumber = 0;
 
+//Cambiar esto poner un map
+
 function Image() {
   cardNumber++;
     return (

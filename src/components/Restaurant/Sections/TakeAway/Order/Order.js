@@ -54,9 +54,10 @@ const Order = () => {
     function updateTotal(price, count, operation){
         let newTotal = 0;
         if(operation === "delete") newTotal = total - price * count;
-        else if(operation === "inc") newTotal = total + price;
+        else if(operation === "inc") newTotal = Number(total) + price;
         else if(operation === "dec" && count - 1 > 0) newTotal = total - price;
         else return;
+        console.log(price)
         setTotal(newTotal.toFixed(2));        
     }
 

@@ -35,12 +35,12 @@ const SectionMenu = ({ menu }) => {
     const [state, dispatch] = useReducer(reducer, JSON.parse(localStorage.getItem('order')) || []);
 
     useEffect(() => {
-        localStorage.setItem('order', JSON.stringify(state));
+        localStorage.setItem('order', JSON.stringify(state)); //intentar meter en customhook
     }, [state]); 
 
     const handleClick = (name, price) => {
         let isDishNew = true;
-        state.filter(item => {
+        state.map(item => {
             if(item.name === name) isDishNew = false;
         })
         setIsCartFilled(0);
@@ -49,7 +49,7 @@ const SectionMenu = ({ menu }) => {
 
     if(show) return (
         <>
-        {isCartFilled != 1 && <Cart 
+        {isCartFilled != 1 && <Cart   //Only show the cart when at least one item has been selected
                 order={state}
                 setShow={setShow} 
                 total={total}
@@ -63,7 +63,7 @@ const SectionMenu = ({ menu }) => {
     )
     else return (
         <>
-        { total > 0 && <span className="burguerCart"><img src={require("../../../../img/iconCart.png")} onClick={() => setShow(true)}/></span> }
+        { total > 0 && <span className="burguerCart"><img src={require("../../../../img/trayIcon.png")} onClick={() => setShow(true)}/></span> }
         <Button setShow={setShow} show={show}/>
         </>
     );

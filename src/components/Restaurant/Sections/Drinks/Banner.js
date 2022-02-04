@@ -1,5 +1,7 @@
 
+
 const Banner = (props) => {
+
     return (
         <>
         <img src={require(`./../../../../img/${props.banners[props.state.count].url}`)} alt="Imagen bebidas" className="sections__drinks--image" />
