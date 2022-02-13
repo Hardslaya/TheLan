@@ -121,20 +121,21 @@
 
 .section-tournaments{
     font-family: Lato;
-    padding: 10rem 0;
+    padding: 10rem 1rem;
     background-color: $color-white;
     clip-path: polygon(0 0, 50% 5%,100% 0, 100% 100%, 0 100%);
 
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    gap: 2rem;
 
     @include respond(tab-land) {
-        clip-path: polygon(0 0, 50% 2%,100% 0, 100% 100%, 50% 102%, 0 100%);
+        //clip-path: polygon(0 0, 50% 2%,100% 0, 100% 100%, 50% 102%, 0 100%);
     }
 
     @include respond(tab-port) {
-        clip-path: polygon(0 0, 50% 1%,100% 0, 100% 100%, 50% 101%, 0 100%);
+        //clip-path: polygon(0 0, 50% 1%,100% 0, 100% 100%, 50% 101%, 0 100%);
     }
 }
 

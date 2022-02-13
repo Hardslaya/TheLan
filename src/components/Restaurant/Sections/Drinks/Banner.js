@@ -1,10 +1,11 @@
 
-const Banner = (props) => {
+const Banner = ({ state, banner }) => {
+
     return (
-        <>
-        <img src={require(`./../../../../img/${props.banners[props.state.count].url}`)} alt="Imagen bebidas" className="sections__drinks--image" />
-        <span className="sections__drinks--text"><i>{props.banners[props.state.count].text}</i></span>
-        </>
+        <div className="sections__carousel__item">
+            <img src={require(`./../../../../img/${banner.url}`)} alt="Imagen bebidas" className="sections__carousel__item--image" />
+            <span className="sections__carousel__item--text"><i>{banner.text}</i></span>
+        </div>
     )
 }
 

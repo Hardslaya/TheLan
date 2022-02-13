@@ -1,69 +1,55 @@
 import Button from "./Button";
 import Courses from "./Menu/Courses";
 import Cart from "./Order/Cart";
+import CartIcon from "./CartIcon";
 import { useEffect, useReducer, useState } from "react";
 import useSemiPersistentEffect from "../../../../customHooks/useSemipersistentState";
-
-const ACTIONS = {
-    ADD_DISH: "add_dish",
-    ADD_COUNT: "add_count",
-}
-
-function reducer(state, action){
-    switch (action.type){
-        case ACTIONS.ADD_DISH:
-            return [...state, { name: action.payload.name, price: action.payload.price, count: 1}];
-        case ACTIONS.ADD_COUNT:
-            return state.map(item => {
-                let newCount = item.count + 1;
-                if(item.name === action.payload) return {...item, count: newCount};
-                return item;
-            })
-        default:
-            return state;
-    }
-}
+import { ACTIONS, orderReducer } from "../../../../helpers/modifyOrder";
+import { updateTotal } from "../../../../helpers/updateTotal";
 
 const SectionMenu = ({ menu }) => {
 
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState({ menu: false, cart: false });
 
     const [ total, setTotal ] = useSemiPersistentEffect('total', 0);
 
-    const [ isCartFilled, setIsCartFilled ] = useSemiPersistentEffect("isCartFilled", 1);
-
-    const [state, dispatch] = useReducer(reducer, JSON.parse(localStorage.getItem('order')) || []);
+    const [order, orderDispatch] = useReducer(orderReducer, JSON.parse(localStorage.getItem('order')) || []);
 
     useEffect(() => {
-        localStorage.setItem('order', JSON.stringify(state));
-    }, [state]); 
+        localStorage.setItem('order', JSON.stringify(order));
+        setTotal(updateTotal(order));
+    }, [order]); 
 
     const handleClick = (name, price) => {
-        let isDishNew = true;
-        state.filter(item => {
-            if(item.name === name) isDishNew = false;
-        })
-        setIsCartFilled(0);
-        isDishNew ? dispatch({ type: ACTIONS.ADD_DISH, payload: {name, price}}) : dispatch({ type: ACTIONS.ADD_COUNT, payload: name});        
+        order.filter(item => item.name === name).length === 0 ? //Empty array -> Dish not registered previously
+        orderDispatch({ type: ACTIONS.ADD_DISH, payload: {name, price}})
+        :
+        orderDispatch({ type: ACTIONS.INCREMENT, payload: name});      
     }
 
-    if(show) return (
+    if(show.menu) return (
         <>
-        {isCartFilled != 1 && <Cart 
-                order={state}
-                setShow={setShow} 
+        {show.cart && 
+            <Cart
+                order={order}
+                setShow={setShow}
+                show={show} 
                 total={total}
-                setTotal={setTotal}
+                orderDispatch={orderDispatch}
             />
+        || total > 0 && //if the order is not empty, show the cart icon
+            <CartIcon setShow={setShow}/>
         }
-                
+
         <Button setShow={setShow} show={show}/>
-        <Courses menu={menu} handleClick={handleClick} />
+        <Courses menu={menu} handleClick={handleClick} setShow={setShow} show={show}/>
         </>
     )
     else return (
         <>
-        { total > 0 && <span className="burguerCart"><img src={require("../../../../img/iconCart.png")} onClick={() => setShow(true)}/></span> }
+        { total > 0 && 
+            <CartIcon setShow={setShow}/> 
+        }
         <Button setShow={setShow} show={show}/>
         </>
     );

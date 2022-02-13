@@ -8,11 +8,14 @@
 .booking{
     height: 60rem;
     width: 100%;
-    margin: 0 auto;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
     box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
     @include respond(tab-land){
         border: 1px solid grey;
@@ -32,7 +35,7 @@
         left: 0;
         top: 0;
         clip-path: ellipse(80% 80% at 2% 50%);
-        position: relative;
+        position: absolute;
         float: left;
         opacity: 80%;
 
@@ -44,16 +47,17 @@
     &__form{
         width: 60%;
         height: inherit;
-        background-color: transparent;
-        position: relative;
-        float: right;
-        right: 1rem;
         color: white;
         font-size: 2rem;
         letter-spacing: 0.1rem;
-        text-align: right;
-        margin-top: 8rem;
-        padding-right: 2rem;
+        padding: 2rem;
+        margin-right: 5rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
 
         @include respond(tab-land){
             position: absolute;
@@ -71,7 +75,6 @@
             background-clip: text;
             color: transparent;
             font-size: 2.5rem;
-            text-align: left;
 
             @include respond(tab-land){
                 position: relative;
@@ -88,26 +91,28 @@
                 margin-bottom: 5rem;
                 font-weight: 900;
             }
-
         }
 
         &-group{
-            padding-right: 55%;
-            position: relative;
-            text-align: right;
-            left: 50%;
-            transform: translate(-50%, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+
+            &:last-of-type{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 1rem;
+            }
             
             @include respond(tab-land){
                 font-size: 3.5rem;
-                padding-right: 25%;
-                margin-bottom: 2rem;
             }
 
             @include respond(tab-port){
-                padding-right: 15%;
                 font-size: 3rem;
-                margin-bottom: 5rem;
             }
 
             &__input{
@@ -125,9 +130,11 @@
             }
 
             &--radio{
-                padding-left: 10%;
-                text-align: left;
-
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                
                 &__input{
                     display: none;
                 }
@@ -140,9 +147,9 @@
                     height: 3rem;
                     width: 3rem;
                     border-radius: 5px;
-                    background-image: url(../../img/check.png);
+                    /*background: url("../../img/check.png");
                     background-position-y: center;
-                    background-size: cover;
+                    background-size: cover;*/
                     display: inline-block;
                     left: 0;
                     top: -0.4rem;
@@ -154,22 +161,18 @@
                         display: block;
                         height: 3rem;
                         width: 3rem;
-                        background-image: url(../../img/checked.png);
+                        background: url("../../img/checked.png");
                         opacity: 0;
                         transition: opacity 0.2s;
                     }
                 }
 
-                &__input:checked~&__label &__button::after{
+                /*&__input:checked~&__label &__button::after{
                     opacity: 1;
-                }
+                }*/
 
                 @include respond(tab-land){
-                    padding-left: 45%;
-                    position: relative;
-                    text-align: left;
-                    left: 50%;
-                    transform: translate(-50%, 0);
+
                 }
 
                 @include respond(tab-port){
@@ -194,11 +197,8 @@
                 font-size: 2rem;*/
 
                 
-                position: absolute;
-                left: 10rem;
+                
                 --full: linear-gradient(red 0 0);
-
-                margin: 1rem auto;
                 border: solid .25em transparent;
                 padding: 1rem 1.5rem;
                 border-radius: 9rem;
@@ -221,19 +221,12 @@
 
 
                 @include respond(tab-land){
-                    width: fit-content;
-                    padding-left: 40%;
-                    position: absolute;
-                    width: fit-content;
-                    left: 50%;
-                    transform: translate(-50%, 0);
                     padding: 1rem 1.5rem;
                     font-size: 2rem;
                 }
 
                 @include respond(tab-port){
                     font-size: 3rem;
-                    right: 50%;
                 }
             }
         }

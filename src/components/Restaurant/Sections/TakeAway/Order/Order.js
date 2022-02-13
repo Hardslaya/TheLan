@@ -1,114 +1,85 @@
 import Footer from "../../../../Footer";
-import trashCan from "../../../../../img/delete.png";
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import useSemiPersistentEffect from "../../../../../customHooks/useSemipersistentState";
+import { ACTIONS, orderReducer } from "../../../../../helpers/modifyOrder";
+import { updateTotal } from "../../../../../helpers/updateTotal";
+import { Link } from "react-router-dom";
 import axios from 'axios';
+import OrderItem from "./OrderItem";
 
-const API_ENDPOINT = 'http://localhost:3001/';
-
-
-
-const ACTIONS = {
-    INCREMENT: "increment",
-    DECREMENT: "decrement",
-    DELETE_DISH: "delete"
-}
-
-const reducer = (state, action) => {
-    switch (action.type){
-        case ACTIONS.INCREMENT:
-            return state.map((item) => {
-                if(item.name === action.payload) return {...item, count: item.count + 1};
-                return item;
-            });
-        case ACTIONS.DECREMENT:
-            return state.map((item) => {
-                if(item.name === action.payload && (item.count - 1) > 0) return {...item, count: item.count - 1};
-                return item;
-            });
-        case ACTIONS.DELETE_DISH:
-            return state.filter(item => item.name !== action.payload);
-        default:
-                return state;
-    }
-}
+const API_ENDPOINT = 'http://localhost:3001/accounts/';
 
 const Order = () => {
 
+    const [ account, setAccount ] = useState([]);
+
+    const [ show, setShow ] = useState({ itemInfo:true, orderSuccess: false});
+
     const [total, setTotal] = useSemiPersistentEffect('total');
 
-    const [state, dispatch] = useReducer(reducer, JSON.parse(localStorage.getItem('order')));
+    const [order, orderDispatch] = useReducer(orderReducer, JSON.parse(localStorage.getItem('order')));
 
     useEffect(() => {
-        localStorage.setItem('order', JSON.stringify(state));
+        setTotal(updateTotal(order));
+        localStorage.setItem('order', JSON.stringify(order));
         if(total <= 0){
-            localStorage.clear();
+            localStorage.removeItem("order");
         } 
-    }, [state, total]);
+    }, [order]);
 
-    axios.post(`${API_ENDPOINT}prueba/`, {
-        "45878": state
-        }).then(resp => console.log(resp.data))
+    useEffect(() => {
+        axios.get(`${API_ENDPOINT}${sessionStorage.getItem('user')}`) //Get the account from the login
+        .then(resp => setAccount(resp.data))
         .catch(error => console.log(error))
+    }, []);
 
-    function updateTotal(price, count, operation){
-        let newTotal = 0;
-        if(operation === "delete") newTotal = total - price * count;
-        else if(operation === "inc") newTotal = total + price;
-        else if(operation === "dec" && count - 1 > 0) newTotal = total - price;
-        else return;
-        setTotal(newTotal.toFixed(2));        
-    }
-
-    function decCount(name, price, count){
-        const operation = "dec";
-        updateTotal(price, count, operation);
-        dispatch({ type: ACTIONS.DECREMENT, payload: name})     
-    }
-    
-    function incCount(name, price, count){
-        const operation = "inc";
-        updateTotal(price, count, operation);
-        dispatch({ type: ACTIONS.INCREMENT, payload: name})
+    const postRequest = () => {       
+        let date = new Date;
+        date = `${date.getDate()}/${("0" + String(date.getMonth() + 1).slice(-2))}/${date.getFullYear()}/${date.getTime()}`;
+        axios.put(`${API_ENDPOINT}${account.id}`, {  //Modify the account's details to include the order
+            ...account,
+            restaurantInvoice: [...account.restaurantInvoice, {order: order, date: date, total: total}],
+        })
+        .then(resp => {
+            localStorage.removeItem("order");
+            setTotal(0);
+            setShow({ itemInfo: false, orderSuccess: true });           
+        })
+        .catch(error => console.log(error))
     }
 
-    function deleteItem(name, price, count){
-        const operation = "delete";
-        updateTotal(price, count, operation);
-        dispatch({ type: ACTIONS.DELETE_DISH, payload: name});
-    }
+    console.log(total > 0)
 
     return (
         <>
         <div className="order">
             <div className="order__image order__image--left"/>
-            <div className="order__main">
-                <span className="order__main__title">Pedido</span>
+                <div className="order__main">
+                    <span className="order__main__title">Pedido</span>
+                    { show.itemInfo &&
+                        total > 0 ? 
+                        order.map((item) => {                   
+                            return (
+                                <OrderItem key={item.name} item={item} orderDispatch={orderDispatch} ACTIONS={ACTIONS}/> 
+                            )                
+                        }) 
+                        :
+                        !show.orderSuccess ?  
+                        <p>No ha seleccionado ningún plato ni bebida</p> 
+                        :
+                        <p>Pedido realizado con éxito</p>
+                    }
 
-                { total > 0 ? 
-                    state.map((item) => {                   
-                        return (
-                            <div className="order__main__item" key={item.name}>
-                                <span className="order__main__item--name">{item.name}</span>
-                                <span className="order__main__item--price">{item.price}€</span>
-                                <span className="order__main__item--sign">x</span>
-                                <span className="btn__count btn__count--add" onClick={() => decCount(item.name, item.price, item.count)}>-</span>          
-                                <span className="btn__count">{item.count}</span>
-                                <span className="btn__count btn__count--add" onClick={() => incCount(item.name, item.price, item.count)}>+</span>
-                                <span className="order__main__item--sign">=</span>
-                                <span className="order__main__item--priceSum">{item.price * item.count}€</span>
-                                <img className="order__main__item--delete" src={trashCan} alt="deleteIcon" onClick={() => deleteItem(item.name, item.price, item.count)}/>
-                            </div> 
-                        )                
-                    }) 
-                    : <p>No ha seleccionado ningún plato ni bebida</p> 
-                }
-                <span className="order__total">Total: {total}€</span> 
-
-            </div>
+                    {total > 0 && <span className="order__total">Total: {total}€</span>}
+                    {!sessionStorage.getItem("user") && total > 0 &&
+                        <Link to='/LogIn'>
+                            <button disabled={total <= 0 ? true : false}>Hacer pedido</button>
+                        </Link>
+                    }
+                    { sessionStorage.getItem("user") && localStorage.getItem("order") && total > 0 && <button disabled={total <= 0 ? true : false} onClick={() => postRequest()}>Hacer pedido</button> }
+                </div>
             <div className="order__image order__image--right"/>
         </div>
-
         <Footer />
         </>
     );

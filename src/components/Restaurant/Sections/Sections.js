@@ -2,14 +2,15 @@ import SectionMeals from "./Meals/SectionMeals.js";
 import SectionDrinks from "./Drinks/SectionDrinks.js";
 import SectionMenu from "./TakeAway/SectionMenu.js";
 import { useEffect, useReducer } from "react";
+import { fetchApi } from "../../../helpers/fetchApi.js";
+
+const API_ENDPOINT = 'http://localhost:3001/menu';
 
 const ACTIONS = {
     FETCH_DATA: "fetch_data",
     FETCH_SUCCESS: "fetch_success",
     FETCH_ERROR: "fetch_error"
 }
-
-const API_ENDPOINT = 'http://localhost:3001/menu';
 
 function reducer( state, action ){
     switch (action.type) {
@@ -26,18 +27,13 @@ function reducer( state, action ){
 
 const Sections = () => {
 
-    useEffect(() => {      
-        dispatch( { type: ACTIONS.FETCH_DATA });
-        fetch(API_ENDPOINT).then((response) => response.json())
-        .then(result => dispatch({ type: ACTIONS.FETCH_SUCCESS, payload: result }))
-        .catch(() => dispatch({ type: ACTIONS.FETCH_ERROR }))
+    useEffect(() => {  
+        fetchApi(API_ENDPOINT, dispatch, ACTIONS);    
     }, []);
 
-    const [ state, dispatch ] = useReducer( reducer, { data: [], isError: false, isLoading: false } );
+    const [ state, dispatch ] = useReducer( reducer, { data: [],  isLoading: false , isError: false,} );
 
     const menu = [state.data.starters, state.data.mainCourse, state.data.dessert, state.data.beverages];
-
-    //HACER QUE SI VIENES DE HOME HAGA 
 
     return (
         <main className="sections">
@@ -49,7 +45,7 @@ const Sections = () => {
                 !state.isError && !menu.includes(undefined) &&
                 <>           
                     <SectionMeals menu={menu}/>
-                    <SectionDrinks />
+                    <SectionDrinks reducerApi={reducer} ACTIONS_API={ACTIONS}/>
                     <SectionMenu menu={menu}/>
                 </>
             }           

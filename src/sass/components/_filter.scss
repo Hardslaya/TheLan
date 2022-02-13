@@ -1,0 +1,10 @@
+.filter{
+    height: 5rem;
+    width: 5rem;
+    display: inline-block;
+    cursor: pointer;
+
+    &:hover{
+        transform: rotate(350deg);
+    }
+}

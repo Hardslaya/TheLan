@@ -1,55 +1,95 @@
 {
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
   "menu": {
     "starters": [
       {
         "name": "Ensalada de aguacate",
         "url": "ensaladaAguacate.jpg",
-        "price": 11.99
+        "price": 11.99,
+        "filters": [
+          "lactose",
+          "gluten",
+          "vegetarian"
+        ]
       },
       {
         "name": "Sopa primavera",
         "url": "sopaPrimavera.jpg",
-        "price": 8.99
+        "price": 8.99,
+        "filters": [
+          "gluten",
+          "vegetarian"
+        ]
       },
       {
         "name": "Lettera Trattoria",
         "url": "letteraTrattoria.jpg",
-        "price": 7.99
+        "price": 7.99,
+        "filters": []
       }
     ],
     "mainCourse": [
       {
         "name": "Secreto a la naranja",
         "url": "secretoNaranja.jpg",
-        "price": 12.99
+        "price": 12.99,
+        "filters": [
+          "gluten"
+        ]
       },
       {
         "name": "Pote gallego",
         "url": "poteGallego.jpg",
         "price": 10.99,
-        "objectId": 3
+        "objectId": 3,
+        "filters": [
+          "gluten",
+          "vegetarian",
+          "lactose"
+        ]
       },
       {
         "name": "Merluza con aguacate",
         "url": "merluza.jpg",
-        "price": 11.99
+        "price": 11.99,
+        "filters": [
+          "lactose",
+          "gluten"
+        ]
       }
     ],
     "dessert": [
       {
         "name": "Macarons",
         "url": "macaron.jpg",
-        "price": 4.99
+        "price": 4.99,
+        "filters": [
+          "vegetarian"
+        ]
       },
       {
         "name": "Tiramisú",
         "url": "tiramisu.jpg",
-        "price": 6.99
+        "price": 6.99,
+        "filters": [
+          "vegetarian"
+        ]
       },
       {
         "name": "Mousse de chocolate",
         "url": "mousse.jpg",
-        "price": 8.99
+        "price": 8.99,
+        "filters": [
+          "lactose",
+          "gluten",
+          "vegetarian"
+        ]
       }
     ],
     "beverages": [
@@ -75,20 +115,238 @@
     {
       "url": "wine.jpeg",
       "alt": "wine",
-      "text": "Disfruta de nuestros vinos de las mejores reservas"
+      "text": "'Disfruta de nuestros vinos de las mejores reservas'"
     },
     {
       "url": "cocteles.jpg",
       "alt": "cocktails",
-      "text": "Atrévete a probar nuestros nuevos cócteles de Juego de Tronos"
+      "text": "'Prueba nuestros nuevos cócteles'"
     },
     {
       "url": "hidromiel.jpg",
       "alt": "mead",
-      "text": "Disfruta la bebida de los vikingos"
+      "text": "'Atrévete con la bebida del norte'"
     }
   ],
-  "prueba": {
-    "45878": []
-  }
+  "tournaments": [
+    {
+      "name": "League of legends",
+      "prize": 200,
+      "places": 50,
+      "price": 10
+    },
+    {
+      "name": "Fortnite",
+      "prize": 50,
+      "places": 100,
+      "price": 5
+    },
+    {
+      "name": "Apex legends",
+      "prize": 100,
+      "places": 50,
+      "price": 7
+    },
+    {
+      "name": "Hearthstone",
+      "prize": 150,
+      "places": 40,
+      "price": 8
+    }
+  ],
+  "filtersList": [
+    {
+      "url": "lactose.png",
+      "foodFilter": "lactose"
+    },
+    {
+      "url": "vegetarian.png",
+      "foodFilter": "vegetarian"
+    },
+    {
+      "url": "gluten.png",
+      "foodFilter": "gluten"
+    }
+  ],
+  "invoice": [],
+  "accounts": [
+    {
+      "id": "123",
+      "roomType": "Pacific Blue",
+      "roomPrice": 50,
+      "name": "Álvaro García Torres",
+      "email": "a.garciatorr@gmail.com",
+      "password": "root",
+      "arrivalDate": "20/02/2022",
+      "departureDate": "25/02/2022",
+      "tournamentsInvoice": [
+        {
+          "order": [
+            {
+              "name": "Apex legends",
+              "price": 7,
+              "count": 1
+            }
+          ],
+          "total": 7,
+          "date": "12/02/2022/1644686816243"
+        },
+        {
+          "order": [
+            {
+              "name": "League of legends",
+              "price": 10,
+              "count": 1
+            }
+          ],
+          "total": 10,
+          "date": "12/02/2022/1644686846886"
+        },
+        {
+          "order": [
+            {
+              "name": "Fortnite",
+              "price": 5,
+              "count": 1
+            }
+          ],
+          "total": 5,
+          "date": "12/02/2022/1644686975398"
+        },
+        {
+          "order": [
+            {
+              "name": "Hearthstone",
+              "price": 8,
+              "count": 1
+            }
+          ],
+          "total": 8,
+          "date": "12/02/2022/1644688265901"
+        },
+        {
+          "order": [
+            {
+              "name": "Apex legends",
+              "price": 7,
+              "count": 1
+            }
+          ],
+          "total": 7,
+          "date": "12/02/2022/1644692875251"
+        }
+      ],
+      "restaurantInvoice": [
+        {
+          "order": [
+            {
+              "name": "Sopa primavera",
+              "price": 8.99,
+              "count": 1
+            },
+            {
+              "name": "Lettera Trattoria",
+              "price": 7.99,
+              "count": 1
+            }
+          ],
+          "date": "11/02/2022/1644598597184",
+          "total": "16.98"
+        },
+        {
+          "order": [
+            {
+              "name": "Ensalada de aguacate",
+              "price": 11.99,
+              "count": 1
+            },
+            {
+              "name": "Secreto a la naranja",
+              "price": 12.99,
+              "count": 1
+            },
+            {
+              "name": "Tiramisú",
+              "price": 6.99,
+              "count": 1
+            },
+            {
+              "name": "Copa de vino tinto",
+              "price": 5.99,
+              "count": 1
+            }
+          ],
+          "date": "11/02/2022/1644598636309",
+          "total": "37.96"
+        },
+        {
+          "order": [
+            {
+              "name": "Sopa primavera",
+              "price": 8.99,
+              "count": 1
+            }
+          ],
+          "date": "12/02/2022/1644687025330",
+          "total": "8.99"
+        },
+        {
+          "order": [
+            {
+              "name": "Sopa primavera",
+              "price": 8.99,
+              "count": 2
+            },
+            {
+              "name": "Lettera Trattoria",
+              "price": 7.99,
+              "count": 2
+            },
+            {
+              "name": "Secreto a la naranja",
+              "price": 12.99,
+              "count": 2
+            },
+            {
+              "name": "Botella de agua",
+              "price": 3.99,
+              "count": 1
+            }
+          ],
+          "date": "12/02/2022/1644702633456",
+          "total": "63.93"
+        },
+        {
+          "order": [
+            {
+              "name": "Sopa primavera",
+              "price": 8.99,
+              "count": 1
+            },
+            {
+              "name": "Lettera Trattoria",
+              "price": 7.99,
+              "count": 1
+            }
+          ],
+          "date": "12/02/2022/1644702671533",
+          "total": "16.98"
+        }
+      ],
+      "reserved": true
+    },
+    {
+      "id": "224",
+      "roomType": "White Wolf",
+      "roomPrice": 70,
+      "name": "Juan Robles Castro",
+      "email": "j.rocastro@gmail.com",
+      "password": "root",
+      "arrivalDate": "01/03/2022",
+      "departureDate": "11/03/2022",
+      "tournamentsInvoice": [],
+      "restaurantInvoice": [],
+      "reserved": false
+    }
+  ]
 }

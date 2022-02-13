@@ -1,4 +1,8 @@
+import { useState } from "react";
 import Tournament from "./Tournaments/Tournament";
+import Booking from "./Booking";
+import PopUp from "./PopUp";
+
 
 import Navegation from './Header/Navegation';
 import Title from './Header/Title';
@@ -6,6 +10,9 @@ import Reservation from './Header/Reservation';
 import Arrows from './Header/Arrows';
 
 const Home = () => {
+
+    const [ displayPopUp, setDisplayPopUp] = useState(false);
+
     return (
         <>
         <header className="mainheader">
@@ -15,8 +22,11 @@ const Home = () => {
             <Arrows />
         </header>
         <div className="section-tournaments">
-            <Tournament />
+            <Tournament setDisplayPopUp={setDisplayPopUp}/>
         </div>
+        <Booking />
+        {displayPopUp && <PopUp setDisplayPopUp={setDisplayPopUp}/>}
+
         
         </>
     );

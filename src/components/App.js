@@ -1,8 +1,9 @@
-import Home from './Home/Home'
-import Nav from './Nav'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Home/Home';
+import LogIn from './LogIn/LogIn';
+import Nav from './Nav';
+import Order from './Restaurant/Sections/TakeAway/Order/Order';
 import Restaurant from './Restaurant/Restaurant';
-import Order from './Restaurant/Sections/TakeAway/Order/Order'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
 
@@ -13,8 +14,9 @@ function App() {
 
       <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/Restaurant" element={<Restaurant />} />
+          <Route path="/LogIn" element={<LogIn/>} />
           <Route path="/Order" element={<Order />} />
+          <Route path="/Restaurant" element={<Restaurant />} />
       </Routes>
     </Router>
     </>

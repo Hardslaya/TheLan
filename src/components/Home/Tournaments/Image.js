@@ -1,10 +1,9 @@
-let cardNumber = 0;
 
-function Image() {
-  cardNumber++;
+function Image({ tournamentNumber }) {
+
     return (
       <>
-        <div className={"tournament-ad__image tournament-ad__".concat(cardNumber)}></div>
+        <div className={"tournament-ad__image tournament-ad__" + tournamentNumber}></div>
       </>     
     )
   }

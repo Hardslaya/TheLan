@@ -5,7 +5,8 @@
 .cart{
     background-color: rgba(255, 255, 255, 0.9);
     color: black;
-    width: 30rem;
+    width: 35rem;
+    max-height: 30rem;
     position: fixed;
     top: 1.5rem;
     right: 1rem;
@@ -20,6 +21,16 @@
     justify-content: space-between;
     text-align: center;
 
+    overflow: scroll;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(32, 2, 32, 0.514);
+        height: 20px;
+    }
 
     &--burguer{
         color: white;
@@ -36,7 +47,7 @@
         &::after{
             content: "";
             display: inline-block;
-            border-bottom: 1px solid currentColor;
+            border-bottom: 1px solid purple;
             width: 2rem;
             position: inherit;
             top: 2rem;
@@ -52,16 +63,20 @@
         }
 
         &:hover{
-            cursor: pointer;
-            background-color: rgba(209, 161, 209, 0.514)
+            /*cursor: pointer;
+            background-color: rgba(209, 161, 209, 0.514)*/
+            color: rgba(58, 25, 61, 0.5);
         }
     }
 
     &--title{
-        background-color: purple;
-        color: white;
+        background: linear-gradient(to right, purple 50%, rgb(243, 30, 66) 50%);
+        background-clip: text;
+        color: transparent;
+        border-bottom: 2px solid pink;
         font-size: 3rem;
-        padding: 1rem;
+        letter-spacing: 0.5rem;
+        padding: .5rem;
     }
 
     &__order{
@@ -75,7 +90,10 @@
         }
 
         &--count{
-
+            padding: .5rem;
+            width: 4rem;
+            height: 3rem;
+            font-size: 1.2rem;
         }
     }
 
@@ -95,7 +113,6 @@
     right: 2rem;
     height: 7rem;
     width: 7rem;
-    background: linear-gradient(to right, purple, hotpink);
     border-radius: 50%;
     transition: all .5s;
 
@@ -104,8 +121,8 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 5rem;
-        height: 5rem;
+        width: 7rem;
+        height: 6rem;
     }
 
     &:hover{
