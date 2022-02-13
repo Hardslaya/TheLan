@@ -1,62 +1,65 @@
 import Filter from "./Filter";
-import Info from "./Dishes";
-import { useState } from "react";
+import Dishes from "./Dishes";
+import { useEffect, useReducer, useState } from "react";
+import { apiReducer, API_ACTIONS, fetchApi } from "../../../../../helpers/fetchApi";
+
+const API_ENDPOINT = "http://localhost:3001/filtersList";
 
 const courses = ["Entrantes", "Platos principales", "Postres", "Bebidas"];
-const filtersList = [ 
-    {
-        url: "lactose.png",
-        foodFilter: "lactose"
-    },
-    {
-        url: "vegetarian.jpg",
-        foodFilter: "vegetarian"
-    },
-    {
-        url: "gluten.png",
-        foodFilter: "gluten"
 
-    }  
-]
+const Courses = ({ menu, handleClick, setShow, show }) => { 
+    
+    useEffect(() => {
+        let timeout = setTimeout(() => {
+            fetchApi(API_ENDPOINT, dispatchApi, API_ACTIONS);
+        }, 1000);
+        return () => clearTimeout(timeout);
+    }, [])
 
-const Courses = ({ menu, handleClick }) => {  
+    const [ foodFilter, setFoodFilter ] = useState([]);
 
-    //arreglar el warning que da <>
+    const [ apiData, dispatchApi ] = useReducer( apiReducer, { data: [],  isLoading: true , isError: false,} );
 
-    const [ isSelected, setIsSelected] = useState("");
-
-    const [ foodFilter, setFoodFilter ] = useState("");
+    const filtersList = apiData.data;
 
     return (
+
         <section className="itemsSelection">
             <div className="itemsSelection__main">
             <div className="itemsSelection__main__filters">
                 <span><i>Filtros:</i></span>
                 {
+                    apiData.isLoading ?
+                    <p>Cargando...</p>
+                    :
                     filtersList.map( item => {
-                        return <Filter key={item.foodFilter} 
-                        setFoodFilter={setFoodFilter} 
-                        url={item.url} 
-                        filter={item.foodFilter}
-                        setIsSelected={setIsSelected}
-                        isSelected={isSelected}/>;
+                        return <Filter 
+                            key={item.foodFilter} 
+                            setFoodFilter={setFoodFilter}
+                            foodFilter={foodFilter} 
+                            url={item.url} 
+                            filter={item.foodFilter}
+                        />;
                     })
                 }          
             </div>
             {
                 courses.map((course, index) => {
                     return (
-                        <>
-                            <p key={course + "P"}>{course}</p>
-                            <div key={course} className="itemsSelection__main__course"> 
+                        <section key={course}>
+                            <p>{course}</p>
+                            <div className="itemsSelection__main__course"> 
                                 {
                                     menu[index].flat().map((meal) => {
-                                        if(foodFilter.length === 0 || course === "Bebidas" || meal.filters.includes(foodFilter)){
+                                        if(foodFilter.length === 0 || course === "Bebidas" || foodFilter.every(i => meal.filters.includes(i)) /*|| meal.filters.includes("lactose", "gluten"))*/){
                                             return ( 
                                                 <div key={meal.name} className="itemsSelection__main__course__dish">
-                                                    <Info 
+                                                    <Dishes 
                                                         meal={meal} 
-                                                        handleClick={() => handleClick(meal.name, meal.price)}
+                                                        handleClick={() =>{
+                                                            handleClick(meal.name, meal.price);
+                                                            setShow({...show, cart: true });
+                                                        }}
                                                     />
                                                 </div>
                                             );
@@ -65,7 +68,7 @@ const Courses = ({ menu, handleClick }) => {
                                     })
                                 }
                             </div>
-                        </>
+                        </section>
                     );
                 })
             }

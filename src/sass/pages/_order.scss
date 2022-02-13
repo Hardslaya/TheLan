@@ -1,6 +1,5 @@
 .order{
    min-height: 80vh;
-   background-color: green;
    color: black;
    font-size: 2rem;
 
@@ -31,11 +30,13 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        gap: 2rem;
 
         &__title{
             font-size: 5rem;
             text-transform: uppercase;
             border-bottom: 1px solid grey;
+            margin-top: 3rem;
             margin-bottom: 3rem;
         }
 
@@ -71,9 +72,22 @@
         font-size: 3rem;
         padding: .5rem 1rem;
         margin-top: 3rem;
-        margin-bottom: 5rem;
         border: 3px solid black;
     }
 
+    & button{
+        margin-top: 4rem;
+        appearance: none;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        background-image: linear-gradient(to right bottom, purple, rgb(175, 48, 69));
+        padding: 2rem 4rem;
+        cursor: pointer;
+        font-size: 2rem;
 
+        &:hover{
+            transform: translateY(-2px);
+        }
+    }
 }

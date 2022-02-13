@@ -1,23 +1,17 @@
-import { useEffect, useState } from "react";
+
 import { Link } from 'react-router-dom';
+import { ACTIONS } from "../../../../../helpers/modifyOrder";
 
-const Cart = ({ order, setShow, total, setTotal }) => {
-    
-    useEffect(() => {
-        addTotal(order);
-    }, [order])
+const Cart = ({ order, setShow, show, total, orderDispatch }) => {
 
-    function addTotal(order){
-        let newTotal = 0;
-        order.map(item =>{
-            newTotal = newTotal + (item.price * item.count);
-        })
-        setTotal(newTotal.toFixed(2));
+    const handleChange = (e, name) => {       
+        if(e.target.value > 0) orderDispatch({ type: ACTIONS.CHANGE_COUNT, payload: { name: name, count: e.target.value }});
+        else orderDispatch({ type: ACTIONS.DELETE_DISH, payload: { name: name }});
     }
 
     return (
         <div className="cart">
-            <span className="cart--burguer" onClick={() => setShow(false)}></span>
+            <span className="cart--burguer" onClick={() => setShow({...show, cart: !show.cart})}></span>
             <span className="cart--title">Pedido</span>
             {order.map((item) => {
                 return (
@@ -25,17 +19,22 @@ const Cart = ({ order, setShow, total, setTotal }) => {
                     <span className="cart__order--name"><b>{item.name}</b></span>
                     <span className="cart__order--price">{item.price}€</span>
                     <span className="cart__order--sign">x</span>
-                    <span className="cart__order--count">{item.count}</span>
+                    <input type="number" value={item.count} className="cart__order--count" onChange={(e) => handleChange(e, item.name)}/>
                     <span className="cart__order--sign">=</span>
-                    <span className="cart__order--priceSum">{item.price * item.count}€</span>
+                    <span className="cart__order--priceSum">{(item.price * item.count).toFixed(2)}€</span>
                 </div>
                 )
             })        
             }
+            {total > 0 ?
+            <>
             <span className="cart__total">Total: {total}€</span>
-            <Link to="/Order" >
+            <Link to="/Order">
                 <span className="btn--tournament">Ir a caja</span>
             </Link>
+            </>
+            :
+            <p>No se ha seleccionado ningún plato</p>}   
         </div>
     );
 }

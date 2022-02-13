@@ -219,6 +219,7 @@
                 -moz-perspective: 150rem;
                 width: 20rem;
                 height: 20rem;
+                
 
                 &__side{
                     border-radius: 50%;
@@ -232,7 +233,8 @@
                     width: 100%;
                     backface-visibility: hidden;
 
-                    &--front{
+                    &--front,
+                    &--back{
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -241,27 +243,59 @@
                             width: 30rem;
                             height: 20rem;
                         }
-                    }
-                    &--back{
-                        background-color: rgba(245, 222, 179, 0.5);
-                        color: black;
-                        transform: rotateX(180deg);
-                        font-size: 2.5rem;
-
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
 
                         & span{
+                            position: absolute;
+                            font-size: 2.5rem;
+                            color: white;
                             text-align: center;
+                            text-shadow: 2px 2px 2px rgb(0, 0, 0),
+                                        -2px -1px 2px rgba(0, 0, 0);
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                    }
+
+                    &--back{
+                        transform: rotateX(180deg);
+                    }
+
+                    &:hover{
+                        filter: grayscale(50%);
+                        cursor: pointer;
+
+                        &:before,
+                        &:after{
+                            position: absolute;
+                            content: "";
+                            display: inline-block;
+                            width: 8rem;
+                            border-radius: 5px;
+                            border: 2px solid white;
+                            z-index: 3;
+                        }
+
+                        &:after{
+                            height: 8rem;
+                            width: 0;
+                            border: 2px solid white;
                         }
                     }
                 }
 
-                &:hover .circle__side--front {
+                /*&:hover .circle__side--front {
                     transform: rotateX(-180deg);
                 }
                 &:hover .circle__side--back {
+                    transform: rotateX(0);
+                }*/
+
+                &__turnFront{
+                    transform: rotateX(-180deg);
+                }
+                
+                &__turnBack{
                     transform: rotateX(0);
                 }
             }                        
@@ -272,39 +306,60 @@
 
 //SECTION-DRINKS
     
-    &__drinks{
+    &__carousel{
         position: relative;
         height: 40rem;
-        overflow: hidden;
-        color: rgba(255, 255, 255, 0.5);
+        width: 100%;
 
-        background-color: black;
+        &__inner{
+            white-space: nowrap;
+            height: 40rem;
+            transition: all .3s;
+        }
 
-        &--image{
+        &__item{
+            position: relative;
             width: 100%;
-        }
+            height: inherit;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
 
-        &--text{
-            position: absolute;
-            top: 13rem;
-            left: 10rem;
-            font-size: 4rem;
+            &--image{
+                height: 40rem;
+                width: 100%;
+            }
+    
+            &--text{
+                position: absolute;
+                top: 13rem;
+                left: 10rem;
+                font-size: 3.5rem;
+                text-shadow: 2px 2px 5px rgb(0, 0, 0),
+                            -2px -2px 5px rgba(0, 0, 0);
+            }
         }
-
+        
         & .square{
             position: absolute;
+            left:50%;
+            transform: translate(-50%);
             width: 11rem;
             display: flex;
             justify-content: space-between;
             bottom: 1rem;
+
             &--link{
                 width: 15px;
                 height: 15px;
                 background-color: rgba(0, 0, 0, 0.5);
                 cursor: pointer;
+                box-shadow: 2px 2px 5px rgb(0, 0, 0);
 
                 & .selected,
-                &:hover{
+                &:hover,
+                &-active{
                     background-color: rgba(255, 255, 255, 0.5);
                 }
             }
@@ -321,6 +376,7 @@
             &--left{
                 top: 18rem;
                 left: 0;
+                z-index: 1;
             }       
         }
 
@@ -380,6 +436,10 @@
     background-size: cover;
     width: 100%;
 
+    @include respond(tab-port){
+        background: rgb(187, 147, 187);
+    }
+
     &__main{
         background-color: rgba(255, 255, 255, 0.9);
         color: black;
@@ -405,11 +465,42 @@
             }
         }
 
-        & > p{
+        & section{
+            width:100%;
+        }
+
+        & section:last-of-type &__course{
+            width: 100%;
             padding: 2rem;
-            margin-bottom: 5rem;
+    
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+
+            
+            &__dish{
+                width: 70%;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 6rem;
+
+                &--name{
+                    width: 50%;
+                }
+            }         
+        }
+
+        & > section > p{
+            width: 50%;
+            padding: 2rem;
+            margin: 2rem auto;;
             border-bottom: 1px solid grey;
             font-size: 3rem;
+            text-align: center;
 
             &:not(:first-child){
                 margin-top: 5rem;
@@ -422,15 +513,20 @@
     
         &__course{
             width: 100%;
+            padding: 2rem;
     
             display: flex;
             justify-content: center;
             align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
 
-            &:last-of-type{
+            @include respond(tab-port){
                 flex-direction: column;
+            }
 
-
+            /*&:last-of-type{
+                flex-direction: column;
             } 
             
             &:last-of-type &__dish{
@@ -443,7 +539,7 @@
                 &--name{
                     width: 50%;
                 }
-            }
+            }*/
     
             &__dish{
                 display: flex;

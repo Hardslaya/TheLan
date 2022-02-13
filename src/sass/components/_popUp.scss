@@ -1,0 +1,137 @@
+.popUp{
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    &__message,
+    &__main{
+        position: fixed;
+        border-radius: 5px;
+        text-align: center;
+        padding: 1rem;
+
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        &--close{
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            height: 5rem;
+            width: 5rem;
+            z-index: 10;
+
+            &::before,
+            &::after{
+                content: "";
+                display: inline-block;
+                border-bottom: 3px solid white;
+                width: 2rem;
+                position: inherit;
+                top: 2rem;
+                right: 1rem;
+            }
+            
+            &::before{
+                transform: rotate(40deg);
+            }
+                    
+            &::after{
+                transform: rotate(-40deg);
+            }
+    
+            &:hover{
+                cursor: pointer;
+                color: rgba(58, 25, 61, 0.5);
+            }
+        } 
+    }
+
+    &__message{
+        background-image: linear-gradient(to right, grey, rgb(107, 107, 107));
+        color: white;
+        min-height: 20rem;
+        min-width: 35rem;
+        font-size: 2rem;
+        padding: 2rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__main{
+        background: url("../../img/popBg.jpg");
+        height: 50rem;
+        width: 60rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-content: center;
+        gap: 2rem;      
+
+        &--name{
+            color: white;
+            font-size: 7rem;
+            align-self: center;
+            z-index: 6;
+            margin-top: 2rem;
+
+            left: 50%;
+            text-shadow: 2px 2px 5px rgb(0, 0, 0),
+                        -2px -2px 5px rgba(0, 0, 0);
+        }
+
+        &__imgDiv{
+            width: 70%;
+            height: 80%;
+            border-radius: 50%;
+            overflow: hidden;
+            outline: .5rem solid white;
+            outline-offset: 2rem;
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            & img{
+                width: 100%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 70%;
+            }
+        }
+
+        &__filters{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            &--filter{
+                height: 5rem;
+                width: 5rem;
+            }
+        }
+
+        &--desc{
+            padding: 1rem 2rem;
+            font-size: 2rem;
+            color: white;
+            z-index: 5;
+            text-shadow: 2px 2px 5px rgb(0, 0, 0),
+            -2px -2px 5px rgba(0, 0, 0);
+        }
+    }
+}

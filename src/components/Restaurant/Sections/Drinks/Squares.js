@@ -1,13 +1,13 @@
 
-const Squares = (props) => {
+const Squares = ({ banners, setActiveIndex, activeIndex }) => {
     return (
         <div className="square">
         {
-            props.banners.map(function(item, index){
+            banners.map(function(item, index){
                 return (
-                    <span className="square--link" key={item.alt} 
+                    <span className={`${(activeIndex === index) ? "square--link square--link-active" : "square--link" }`} key={item.alt} 
                     onClick={ () => 
-                        props.dispatch({ type: props.ACTIONS.SELECT_INDEX, payload : index})
+                       setActiveIndex(index)
                     } />
                 );
             })
