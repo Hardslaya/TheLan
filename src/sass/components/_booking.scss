@@ -4,7 +4,6 @@
     }
 }
 
-
 .booking{
     height: 60rem;
     width: 100%;
@@ -19,11 +18,7 @@
 
     @include respond(tab-land){
         border: 1px solid grey;
-        height: 85rem;
-    }
-
-    @include respond(tab-port){
-        height: 95rem;
+        
     }
 
     &__image{
@@ -77,64 +72,44 @@
             font-size: 2.5rem;
 
             @include respond(tab-land){
-                position: relative;
-                text-align: center;
-                left: 50%;
-                transform: translate(-50%, 0);
-                font-size: 4rem;
-                font-weight: 900;
-                margin-bottom: 2.5rem;
+
             }
 
             @include respond(tab-port){
-                font-size: 3.5rem;
-                margin-bottom: 5rem;
-                font-weight: 900;
+
             }
         }
 
-        &-group{
+        &__dates{
             display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            & p{
+                align-self: center;
+            }
+
+            & .error{
+                display: block;
+                font-size: 1.2rem;
+                color: rgb(255, 93, 93);
+            }
+        }
+
+        &__rooms{
+            display: flex;
+            flex-direction: column;
             justify-content: center;
-            align-items: center;
             gap: 1rem;
 
-            &:last-of-type{
+            &__group{
                 display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: flex-start;
+                justify-content: flex;
+                align-items: center;
                 gap: 1rem;
-            }
-            
-            @include respond(tab-land){
-                font-size: 3.5rem;
-            }
-
-            @include respond(tab-port){
-                font-size: 3rem;
-            }
-
-            &__input{
-                border-bottom: 5px solid transparent;
-
-                @include respond(tab-port){
-                    font-size: 3rem;
-                }
-                
-                &:focus {
-                    outline: none;
-                    border-bottom: 5px solid orange;
-                    box-shadow: rgba($color-purple-light, 0.56) 0px 22px 70px 4px; ;
-                }
             }
 
             &--radio{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 1rem;
-                
                 &__input{
                     display: none;
                 }
@@ -146,37 +121,6 @@
                 &__button {
                     height: 3rem;
                     width: 3rem;
-                    border-radius: 5px;
-                    /*background: url("../../img/check.png");
-                    background-position-y: center;
-                    background-size: cover;*/
-                    display: inline-block;
-                    left: 0;
-                    top: -0.4rem;
-    
-                    &::after {
-                        content: "";
-                        background-position-y: center;
-                        background-size: cover;
-                        display: block;
-                        height: 3rem;
-                        width: 3rem;
-                        background: url("../../img/checked.png");
-                        opacity: 0;
-                        transition: opacity 0.2s;
-                    }
-                }
-
-                /*&__input:checked~&__label &__button::after{
-                    opacity: 1;
-                }*/
-
-                @include respond(tab-land){
-
-                }
-
-                @include respond(tab-port){
-                    font-size: 3rem;
                 }
             }
         }
@@ -184,19 +128,6 @@
         &__input{
             &--submit{
                 //Hacer lo de la página https://css-tricks.com/css-ing-candy-ghost-buttons/
-               /* position: relative;
-                top: 3rem;
-                width: 10%;
-                min-width: fit-content;
-                
-                background: transparent;
-                border: 3px solid $color-purple-light;
-                padding: 1rem;
-                border-radius: 10%;
-                color: white;
-                font-size: 2rem;*/
-
-                
                 
                 --full: linear-gradient(red 0 0);
                 border: solid .25em transparent;

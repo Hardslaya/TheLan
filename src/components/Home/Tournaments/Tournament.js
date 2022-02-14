@@ -32,7 +32,7 @@ const Tournament = ({ setDisplayPopUp }) => {
       ...account,
       tournamentsInvoice: [...account.tournamentsInvoice, { order: [{name: name, price: price, count: 1}], total:price, date: date}],
     })
-    .then(resp => setDisplayPopUp(true))
+    .then(resp => setDisplayPopUp({bool: true, message: "tournament"}))
     .catch(e => console.log(e))
   }
   

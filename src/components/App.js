@@ -4,8 +4,15 @@ import Nav from './Nav';
 import Order from './Restaurant/Sections/TakeAway/Order/Order';
 import Restaurant from './Restaurant/Restaurant';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+//import { useEffect, useState } from 'react';
 
 function App() {
+
+  /*const [navText, setNavText ] = useState("Log In");
+
+  useEffect(() => {
+    sessionStorage.getItem("user") ? setNavText("Mi cuenta") : setNavText("Log in");
+  })*/
 
   return (
     <>

@@ -1,5 +1,4 @@
 import Room from "./Room";
-import { useState } from "react";
 
 const rooms = [
     {
@@ -20,23 +19,15 @@ const rooms = [
     } 
 ];
 
-const Rooms = ({  }) => {
-
-    const [ isChecked, setIsChecked ] = useState("White Wolf");
-
-    const handleClick = (roomName) => {
-        setIsChecked(roomName)
-    }
-
-    console.log(isChecked)
+const Rooms = ({ handleClick, isChecked  }) => {
 
     return (
         <>
         <p className="u-margin-bottom-small">Tipo de habitación:</p>
-        <div className="booking__form-group u-margin-bottom-small">  
+        <div className="booking__form__rooms u-margin-bottom-small">  
             {rooms.map(room => {
                 return (
-                <div key={room.name} className="booking__form-group--radio">
+                <div key={room.name} className="booking__form__rooms__group">
                     <Room room={room} isChecked={isChecked} handleClick={handleClick}/>                     
                 </div>
                 );
