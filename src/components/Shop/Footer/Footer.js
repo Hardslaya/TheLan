@@ -1,9 +1,9 @@
-import instagram from "./../img/icon-instagram.png";
-import facebook from "./../img/icon-facebook.png";
-import twitter from "./../img/icon-twitter.png";
-import github from "./../img/icon-github.png";
-import google from "./../img/icon-google.png";
-import whatsapp from "./../img/icon-whatsapp.png";
+import instagram from "./../../../img/icon-instagram.png";
+import facebook from "./../../../img/icon-facebook.png";
+import twitter from "./../../../img/icon-twitter.png";
+import github from "./../../../img/icon-github.png";
+import google from "./../../../img/icon-google.png";
+import whatsapp from "./../../../img/icon-whatsapp.png";
 
 
 function Footer() {

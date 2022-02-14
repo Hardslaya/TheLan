@@ -2,6 +2,7 @@ import { useState } from "react";
 import Tournament from "./Tournaments/Tournament";
 import Booking from "./Booking";
 import PopUp from "./PopUp";
+import Footer from "./../Footer";
 
 
 import Navegation from './Header/Navegation';
@@ -27,7 +28,7 @@ const Home = () => {
         <Booking />
         {displayPopUp && <PopUp setDisplayPopUp={setDisplayPopUp}/>}
 
-        
+        <Footer />
         </>
     );
 }

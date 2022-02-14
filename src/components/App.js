@@ -5,6 +5,8 @@ import Order from './Restaurant/Sections/TakeAway/Order/Order';
 import Restaurant from './Restaurant/Restaurant';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import Shop from './Shop/Shop';
+
 function App() {
 
   return (
@@ -17,6 +19,7 @@ function App() {
           <Route path="/LogIn" element={<LogIn/>} />
           <Route path="/Order" element={<Order />} />
           <Route path="/Restaurant" element={<Restaurant />} />
+          <Route path="/Shop" element={<Shop />} />
       </Routes>
     </Router>
     </>
