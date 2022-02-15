@@ -6,17 +6,17 @@ function Item(props){
 
   return(
     <>
-    <img className="second-products__card_image" src={item.img}></img>
-    <span className="second-products__card_name">
+    <img className="secondsection-products__card_image" src={item.img}></img>
+    <span className="secondsection-products__card_name">
       <a href={item.url}>{item.name}</a>
     </span>
-    <span className="second-products__card_caract">{item.caract}</span>
-    <span className="second-products__card_caract">{item.text}</span>
-    <div className="second-products__card_price">
+    <span className="secondsection-products__card_caract">{item.caract}</span>
+    <span className="secondsection-products__card_caract">{item.text}</span>
+    <div className="secondsection-products__card_price">
       <span>{item.price}€</span>
       <img src={cart} onClick={()=>addCart(item)}></img>
     </div>
-    <span className="second-products__card_points">
+    <span className="secondsection-products__card_points">
       {item.points}
       {(() => {
         switch (item.points) {

@@ -3,13 +3,13 @@ import Item from "./Item";
 
 function SecondSection(props) {
   return (
-    <div className="second">
-      <h2 className="second-title">Toda nuestra gama de productos</h2>
+    <div className="secondsection">
+      <h2 className="secondsection-title">Toda nuestra gama de productos</h2>
 
-      <div className="second-products">
+      <div className="secondsection-products">
          {list.map(function (item){
            return(
-             <div key={item.ObjectID} className="second-products__card">
+             <div key={item.ObjectID} className="secondsection-products__card">
                <Item item={item} second={true} addCart={props.addCart}/>
              </div>
            );
