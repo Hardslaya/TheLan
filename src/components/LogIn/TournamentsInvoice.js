@@ -7,7 +7,7 @@ const TournamentsInvoice = ({ accountState }) => {
         {accountState.tournamentsInvoice.length > 0 ?
             accountState.tournamentsInvoice.map((invoice) => {
                 return (
-                    <InvoiceDetails key={invoice.date} invoice={invoice}/> 
+                    <InvoiceDetails key={invoice.date} invoice={invoice} accountState={accountState}/> 
                 )
             })
         :

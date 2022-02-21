@@ -223,9 +223,17 @@
                 align-items: center;
                 gap: 5rem;
 
+                &--icons{
+                    margin-left: auto;
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    gap: 1rem;
+                }
+
                 &--image{
                     position: relative;
-                    background-color: wheat;
+                    background-color: white;
                     border-radius: 50%;
                     width: 4rem;
                     height: 4rem;
@@ -238,6 +246,10 @@
                         transform: translate(-50%, -50%);
                         width: 4rem;
                         cursor: pointer;
+                    }
+
+                    &:hover{
+                        background-color: rgba(128, 0, 128, 0.5);
                     }
                 }
 

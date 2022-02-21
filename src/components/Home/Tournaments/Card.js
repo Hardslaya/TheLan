@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function Card({ game, handleClick }){  
+function Card({ game, handleClick }){ 
+    
+    let navigate = useNavigate();
+    
     return (
         <div className="tournament-ad__info" key={game.name}>
             <h3 className="tournament-ad__info--heading">{game.name}</h3>           
@@ -9,9 +12,9 @@ function Card({ game, handleClick }){
             <p className="tournament-ad__info--text">{game.price}€/participante</p>
             {
                 sessionStorage.getItem("user") === null ? 
-                <Link to="/LogIn"><button >Registrate</button></Link>
+                <span className="btn--tournament" onClick={() => navigate("/LogIn")}>Registrate</span>
                 :
-                <button onClick={() => handleClick(game.name, game.price)}>Registrate</button>
+                <button className="btn--tournament" onClick={() => handleClick(game.name, game.price)}>Registrate</button>
             }
             
         </div>

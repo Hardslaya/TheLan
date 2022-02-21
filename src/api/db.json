@@ -172,13 +172,13 @@
   "accounts": [
     {
       "id": "123",
-      "roomType": "Pacific Blue",
+      "roomType": "White Wolf",
       "roomPrice": 50,
       "name": "Álvaro García Torres",
       "email": "a.garciatorr@gmail.com",
       "password": "root",
-      "arrivalDate": "20/02/2022",
-      "departureDate": "25/02/2022",
+      "arrivalDate": "2022-02-18",
+      "departureDate": "2022-02-22",
       "tournamentsInvoice": [
         {
           "order": [
@@ -194,35 +194,13 @@
         {
           "order": [
             {
-              "name": "League of legends",
-              "price": 10,
-              "count": 1
-            }
-          ],
-          "total": 10,
-          "date": "12/02/2022/1644686846886"
-        },
-        {
-          "order": [
-            {
               "name": "Fortnite",
               "price": 5,
               "count": 1
             }
           ],
           "total": 5,
-          "date": "12/02/2022/1644686975398"
-        },
-        {
-          "order": [
-            {
-              "name": "Hearthstone",
-              "price": 8,
-              "count": 1
-            }
-          ],
-          "total": 8,
-          "date": "12/02/2022/1644688265901"
+          "date": "17/02/2022/1645089627947"
         },
         {
           "order": [
@@ -233,7 +211,7 @@
             }
           ],
           "total": 7,
-          "date": "12/02/2022/1644692875251"
+          "date": "17/02/2022/1645090019422"
         }
       ],
       "restaurantInvoice": [
@@ -331,9 +309,21 @@
           ],
           "date": "12/02/2022/1644702671533",
           "total": "16.98"
+        },
+        {
+          "order": [
+            {
+              "name": "Sopa primavera",
+              "price": 8.99,
+              "count": 1
+            }
+          ],
+          "date": "17/02/2022/1645089263049",
+          "total": "8.99"
         }
       ],
-      "reserved": true
+      "reserved": true,
+      "isLoading": false
     },
     {
       "id": "224",

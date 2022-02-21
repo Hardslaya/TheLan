@@ -17,25 +17,32 @@ const AccountInfo = ({ accountState }) => {
         <p>Loading...</p>
         :
         <>
-            <div className="login__account__details__general">
-                <p>Datos personales</p>
-                <div className="login__account__details__general--inner">
-                    <span><b>Habitación:</b> {accountState.id}</span>
-                    <span><b>Nombre:</b> {accountState.name}</span>
-                    <span><b>Email:</b> {accountState.email}</span>
-                    <span><b>Fecha de entrada:</b> {accountState.arrivalDate}</span>
-                    <span><b>Fecha de salida:</b> {accountState.departureDate}</span>
-                    <span><b>Estancia:</b> {datesDifference(accountState.arrivalDate, accountState.departureDate)} días</span>
-                </div>
+        <div className="login__account__details__general">
+            <p>Datos personales</p>
+            <div className="login__account__details__general--inner">
+                <span><b>Habitación:</b> {accountState.id}</span>
+                <span><b>Nombre:</b> {accountState.name}</span>
+                <span><b>Email:</b> {accountState.email}</span>
             </div>
-            <div className="login__account__details__general">         
-                <p>Mi habitación</p>
-                <div className="login__account__details__general--inner">
-                    <span><b>Tipo de habitación:</b> {accountState.roomType}</span>
-                    <span><b>Número de habitación:</b> {accountState.id}</span>
-                    <span><b>Total:</b> {accountState.roomPrice*datesDifference(accountState.arrivalDate, accountState.departureDate)}€</span>  
-                </div>
+        </div>
+        <div className="login__account__details__general">         
+            <p>Mi habitación</p>
+            <div className="login__account__details__general--inner">
+            {
+                accountState.roomType ?
+                <>
+                <span><b>Fecha de entrada:</b> {accountState.arrivalDate}</span>
+                <span><b>Fecha de salida:</b> {accountState.departureDate}</span>
+                <span><b>Estancia:</b> {datesDifference(accountState.arrivalDate, accountState.departureDate)} días</span>
+                <span><b>Tipo de habitación:</b> {accountState.roomType}</span>
+                <span><b>Número de habitación:</b> {accountState.id}</span>
+                <span><b>Total:</b> {accountState.roomPrice*datesDifference(accountState.arrivalDate, accountState.departureDate)}€</span>  
+                </>
+                :
+                <span>No se ha reservado ninguna habitación</span>
+            }
             </div>
+        </div>
         </>
         }   
         </>

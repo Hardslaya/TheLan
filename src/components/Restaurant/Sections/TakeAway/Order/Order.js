@@ -1,37 +1,24 @@
 import Footer from "../../../../Footer";
-import { useEffect, useReducer, useState } from "react";
-import useSemiPersistentEffect from "../../../../../customHooks/useSemipersistentState";
-import { ACTIONS, orderReducer } from "../../../../../helpers/modifyOrder";
-import { updateTotal } from "../../../../../helpers/updateTotal";
+import { useContext, useEffect, useState } from "react";
+import { ACTIONS } from "../../../../../helpers/modifyOrder";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import OrderItem from "./OrderItem";
+import { UserContext } from "../../../../../helpers/userContext";
 
 const API_ENDPOINT = 'http://localhost:3001/accounts/';
 
-const Order = () => {
+const Order = ({ order, orderDispatch, setDisplayOrder, total, setTotal }) => {
 
-    const [ account, setAccount ] = useState([]);
+    const account = useContext(UserContext);
 
     const [ show, setShow ] = useState({ itemInfo:true, orderSuccess: false});
 
-    const [total, setTotal] = useSemiPersistentEffect('total');
-
-    const [order, orderDispatch] = useReducer(orderReducer, JSON.parse(localStorage.getItem('order')));
-
     useEffect(() => {
-        setTotal(updateTotal(order));
-        localStorage.setItem('order', JSON.stringify(order));
         if(total <= 0){
             localStorage.removeItem("order");
         } 
     }, [order]);
-
-    useEffect(() => {
-        axios.get(`${API_ENDPOINT}${sessionStorage.getItem('user')}`) //Get the account from the login
-        .then(resp => setAccount(resp.data))
-        .catch(error => console.log(error))
-    }, []);
 
     const postRequest = () => {       
         let date = new Date;
@@ -48,13 +35,12 @@ const Order = () => {
         .catch(error => console.log(error))
     }
 
-    console.log(total > 0)
-
     return (
         <>
         <div className="order">
             <div className="order__image order__image--left"/>
                 <div className="order__main">
+                    <span className="order__main__back" onClick={() => setDisplayOrder(false)}>Volver</span>
                     <span className="order__main__title">Pedido</span>
                     { show.itemInfo &&
                         total > 0 ? 

@@ -1,11 +1,11 @@
 
-const Room = ({ room, isChecked, handleClick }) => {
+const Room = ({ room, roomChecked, handleClick }) => {
 
     return(
         <>
-            <input type="radio" name="room" id={room.id} className="booking__form__rooms--radio__input" checked={isChecked === room.name} onChange={() => handleClick(room.name)}/>
+            <input type="radio" name="room" id={room.id} className="booking__form__rooms--radio__input" checked={roomChecked.name === room.name} onChange={() => handleClick(room.name, room.price)}/>
             {
-                isChecked === room.name ?
+                roomChecked.name === room.name ?
                 <img className="booking__form__rooms--radio__button" src={require("../../../img/checked.png")}/>
                 :
                 <img className="booking__form__rooms--radio__button" src={require("../../../img/check.png")}/>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Tournament from "./Tournaments/Tournament";
 import Booking from "./Booking";
 import PopUp from "./PopUp";
@@ -6,7 +6,6 @@ import PopUp from "./PopUp";
 const Home = () => {
 
     const [ displayPopUp, setDisplayPopUp] = useState({ bool: false, message: "" });
-    console.log(displayPopUp)
 
     return (
         <>
