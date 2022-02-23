@@ -6,7 +6,7 @@ function Item(props){
 
   return(
     <>
-    <img className="secondsection-products__card_image" src={item.img}></img>
+    <img className="secondsection-products__card_image" src={require(`./../../../img/${item.img}`)}></img>
     <span className="secondsection-products__card_name">
       <a href={item.url}>{item.name}</a>
     </span>
