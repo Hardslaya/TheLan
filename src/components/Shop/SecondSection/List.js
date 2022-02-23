@@ -45,6 +45,8 @@ function List(props) {
 
   const [storiesState, dispatchStories] = useReducer(storiesReducer, initialStoriesState);
   const { stories, loading, error } = storiesState;
+  const [items, setItems] = useState(8);
+  console.log(items);
 
   /*function loadStories(){
     dispatchStories({type: "STORIES_FETCH__INIT"})
@@ -68,15 +70,21 @@ function List(props) {
   }
 
   return loading ? <p>Loading...</p> : 
+  <>
     <div className="secondsection-products">
-      {stories.map(function (item){
+      {stories.slice(0, items).map(function (item){
         return(
             <div key={item.ObjectID} className="secondsection-products__card">
               <Item item={item} second={true} addCart={props.addCart}/>
             </div>
           );
         })}
+        
     </div>
+    <div>
+      <button className="button" onClick={() => setItems(items + 8)}>View more</button>
+    </div>
+  </>
 }
 
 
