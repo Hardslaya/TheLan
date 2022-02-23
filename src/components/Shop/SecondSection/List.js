@@ -1,6 +1,6 @@
 import { useEffect, useState, useReducer } from "react";
 import Item from "./Item";
-import { getAsyncStories, withError} from "./../../../api/bbdd"
+import { getAsyncStories, withError} from "./../../../api/db.json"
 
 const API_ENDPOINT = 'http://localhost:3001/productos';
 

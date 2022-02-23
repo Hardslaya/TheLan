@@ -6,7 +6,7 @@ function Item(props){
 
     return(
         <>
-          <img className="popup-products__card_image" src={item.img}></img>
+          <img className="popup-products__card_image" src={require(`./../../../../img/${item.img}`)}></img>
           <div className="popup-products__card_text">
             <a href={item.url}>{item.name}</a>
             <span className="caract">{item.caract}</span>
