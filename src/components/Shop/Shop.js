@@ -22,7 +22,7 @@ const delCart = (item) => {
     type: TYPES.del,payload:item,
   });
 }
-console.log(state)
+//console.log(state)
 
 localStorage.setItem('cart',JSON.stringify(state));
 

@@ -19,7 +19,7 @@ function Cart(props) {
       return suma
       
     })
-    console.log('suma',suma)
+    //console.log('suma',suma)
     setCount(suma)
   },[local]);
 

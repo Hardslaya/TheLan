@@ -2,6 +2,8 @@ import { useEffect, useState, useReducer } from "react";
 import Item from "./Item";
 import { getAsyncStories, withError} from "./../../../api/bbdd"
 
+const API_ENDPOINT = 'http://localhost:3001/productos';
+
 const initialStoriesState = {
   loading: false,
   error: false,
@@ -22,7 +24,7 @@ const storiesReducer = (state, action) => {
         error: false,
         stories: action.payload
       }
-    case "STORIES_FETCH__ERROR":
+    case "STORIES_FETCH_FAILURE":
       return{
         loading: false,
         error: true,
@@ -44,11 +46,18 @@ function List(props) {
   const [storiesState, dispatchStories] = useReducer(storiesReducer, initialStoriesState);
   const { stories, loading, error } = storiesState;
 
-  function loadStories(){
+  /*function loadStories(){
     dispatchStories({type: "STORIES_FETCH__INIT"})
     withError(getAsyncStories()).then(result => {
       dispatchStories({type: "STORIES_FETCH__SUCCESS", payload: result.data.stories})
     }).catch(_err => dispatchStories({type: "STORIES_FETCH__ERROR"}) );
+  }*/
+
+  function loadStories(){
+    dispatchStories({ type: 'STORIES_FETCH__INIT' });
+    fetch(API_ENDPOINT).then(response => response.json())
+      .then(result => dispatchStories({ type: 'STORIES_FETCH__SUCCESS', payload: result }))
+      .catch(() => dispatchStories({ type: 'STORIES_FETCH__FAILURE' }));
   }
 
   if(error){
