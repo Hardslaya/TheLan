@@ -1,12 +1,26 @@
+import { useState } from "react";
+
 import List from "./List";
 
+
+
 function SecondSection(props) {
+
+  const [sort, setSort] = useState('NONE');
+  
+
 
   return (
     <div className="secondsection">
       <h2 className="secondsection-title">Toda nuestra gama de productos</h2>
 
-      <List addCart={props.addCart}/>
+      <div className="secondsection-order">
+        <button onClick={() => setSort('PRICE')}>Price</button>
+        <button onClick={() => setSort('NAME')}>Name</button>
+        <button onClick={() => setSort('POINTS')}>Points</button>
+      </div>
+
+      <List addCart={props.addCart} sort={sort} setSort={setSort}/>
     </div>
   );
 }
