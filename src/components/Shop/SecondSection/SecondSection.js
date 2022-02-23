@@ -1,27 +1,20 @@
+import List from "./List";
 import Item from "./Item";
 
-
 function SecondSection(props) {
+
   return (
     <div className="secondsection">
       <h2 className="secondsection-title">Toda nuestra gama de productos</h2>
 
-      <div className="secondsection-products">
-         {list.map(function (item){
-           return(
-             <div key={item.ObjectID} className="secondsection-products__card">
-               <Item item={item} second={true} addCart={props.addCart}/>
-             </div>
-           );
-         })}
-      </div>
+      <List addCart={props.addCart}/>
     </div>
   );
 }
 
+
+
 export default SecondSection;
-
-
 
 
 

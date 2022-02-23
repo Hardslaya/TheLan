@@ -489,6 +489,10 @@
         & img{
             width: 2.5rem;
             height: 2.5rem;
+            transition: transform 0.5s;
+            &:hover{
+                transform: scale(1.5);
+            }
         }
     }
 
@@ -625,7 +629,7 @@
     &-price{
         background-color: rgb(190, 190, 190);
         display: flex;
-        margin-top: 1rem;
+        margin-top: auto;
         margin-left: auto;
         margin-bottom: 3rem;
         margin-right: 1rem;
@@ -663,18 +667,46 @@
     flex-direction: column;
 
     &-close{
-        position: absolute;
-        top: 3rem;
-        right: 2em;
-        padding: 1rem;
-        font-weight: bold;
-        border: none;
-        border-radius: 1rem;
-        background-color: rgb(240, 240, 240);
-        transition: transform 0.5s;
-        &:hover{
-            cursor: pointer;
-            transform: scale(1.2);
+        width: 100%;
+        top: 0;
+        position: sticky;
+
+        & button{
+            position: absolute;
+            top: 3rem;
+            right: 2rem;
+            padding: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 1rem;
+            background-color: rgb(240, 240, 240);
+            transition: transform 0.5s;
+            &:hover{
+                cursor: pointer;
+                transform: scale(1.2);
+            }
+
+            @media only screen and (max-width: 1450px) {
+                &{
+                    padding: 0.7rem;
+                    right: 1.5rem;
+                }
+            }
+            @media only screen and (max-width: 1450px) {
+                &{
+                    right: 1rem;
+                }
+            }
+            @media only screen and (max-width: 1000px) {
+                &{
+                    right: 0.5rem;
+                }
+            }
+            @media only screen and (max-width: 800px) {
+                &{
+                    right: 0rem;
+                }
+            }
         }
     }
 

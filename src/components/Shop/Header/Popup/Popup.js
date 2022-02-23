@@ -9,9 +9,10 @@ function Popup(props) {
 
   return (
     <div className="popup">
-
-      <button className='popup-close' onClick={() => props.setPopup(!props.popup)}>x</button>
-
+      <div className='popup-close'>
+        <button onClick={() => props.setPopup(!props.popup)}>x</button>
+      </div>
+      
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
 
       <List searchTerm={searchTerm} addCart={props.addCart}/>
