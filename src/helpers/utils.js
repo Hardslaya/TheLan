@@ -8,8 +8,4 @@ export function debounce(f, timeout = 300){
       return f(...args);   
     }, timeout)   
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master
