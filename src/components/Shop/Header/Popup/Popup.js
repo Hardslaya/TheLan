@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 
 import Search from "./Search";
 import List from "./List";
@@ -6,6 +6,11 @@ import List from "./List";
 function Popup(props) {
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchVersion, setSearchVersion] = useState(0);
+
+  useEffect(() => {
+
+  })
 
   return (
     <div className="popup">

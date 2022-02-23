@@ -1,6 +1,9 @@
 import { debounce } from "./../../../../helpers/utils"
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 function Search(props) {
 
   function handleChange (event) {

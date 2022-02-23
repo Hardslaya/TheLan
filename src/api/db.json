@@ -8,7 +8,11 @@
   ],
   "productos":[
     {
+<<<<<<< HEAD
       "img": "require('pc1.jpg')",
+=======
+      "img": "pc1.jpg",
+>>>>>>> master
       "name": "Millenium Machine 1 Mini Soraka",
       "url":"https://www.pccomponentes.com/millenium-machine-1-mini-soraka-amd-ryzen-5-5600x-16gb-1tb-480gb-ssd-rtx-3060ti",
       "caract": "AMD Ryzen 5 5600X/16GB/1TB+480GB SSD/RTX 3060Ti",
@@ -18,7 +22,11 @@
       "ObjectID": 0
     },
     {
+<<<<<<< HEAD
       "img": "require('pc2.jpg')",
+=======
+      "img": "pc2.jpg",
+>>>>>>> master
       "name": "PcCom Gold",
       "url":"https://www.pccomponentes.com/pccom-gold-amd-ryzen-5-5600x-16gb-1tbssd-rtx3060ti",
       "caract": "AMD Ryzen 5 5600X/16GB/1TBSSD/RTX3060Ti",
@@ -28,7 +36,11 @@
       "ObjectID": 1
     },
     {
+<<<<<<< HEAD
       "img": "require('pc3.jpg')",
+=======
+      "img": "pc3.jpg",
+>>>>>>> master
       "name": "PcCom Bronze SP",
       "url":"https://www.pccomponentes.com/pccom-bronze-sp-intel-core-i5-10400f-8gb-480gbssd-gtx1050ti-windows-10-home",
       "caract": "Intel Core i5-10400F/8GB/480GBSSD/GTX1050Ti",
@@ -38,7 +50,11 @@
       "ObjectID": 2
     },
     {
+<<<<<<< HEAD
       "img": "require('pc4.jpg')",
+=======
+      "img": "pc4.jpg",
+>>>>>>> master
       "name": "PcVIP Crusher",
       "url":"https://www.pccomponentes.com/pcvip-crusher-intel-core-i5-10400f-16gb-1tb-500gb-ssd-gtx1050ti",
       "caract": "Intel Core i5 10400F/16GB/1TB + 500GB SSD/GTX1050Ti",
@@ -48,7 +64,11 @@
       "ObjectID": 3
     },
     {
+<<<<<<< HEAD
       "img": "require('pc5.jpg')",
+=======
+      "img": "pc5.jpg",
+>>>>>>> master
       "name": "PcCom Silver Ultra",
       "url":"https://www.pccomponentes.com/pccom-silver-ultra-intel-core-i7-11700-16gb-1tb-500gb-ssd-rtx2060",
       "caract": "Intel Core i7-11700/16GB/1TB + 500GB SSD/RTX2060",
@@ -58,7 +78,11 @@
       "ObjectID": 4
     },
     {
+<<<<<<< HEAD
       "img": "require('pc6.jpg')",
+=======
+      "img": "pc6.jpg",
+>>>>>>> master
       "name": "Zone Evil Silver76",
       "url":"https://www.pccomponentes.com/zone-evil-silver76-intel-core-i5-11400f-16gb-1tb-500gb-ssd-gtx-1650",
       "caract": "Intel Core i5-11400F/16GB/1TB+500GB SSD/GTX 1650",
@@ -68,7 +92,11 @@
       "ObjectID": 5
     },
     {
+<<<<<<< HEAD
       "img": "require('pc7.jpg')",
+=======
+      "img": "pc7.jpg",
+>>>>>>> master
       "name": "Legion-Q Tracker Lambda",
       "url":"https://www.pccomponentes.com/legion-q-tracker-lambda-intel-core-i5-10400-16gb-1tb-250gb-ssd-gt-1030",
       "caract": "Intel Core i5-10400/16GB/1TB+250GB SSD/GT 1030",
@@ -78,7 +106,11 @@
       "ObjectID": 6
     },
     {
+<<<<<<< HEAD
       "img": "require('pc8.jpg')",
+=======
+      "img": "pc8.jpg",
+>>>>>>> master
       "name": "MSI P50 Creator",
       "url":"https://www.pccomponentes.com/msi-creator-p100x-11te-636eu-intel-core-i7-11700k-64gb-2tb-1tb-ssd-rtx-3080",
       "caract": "Intel Core i5-11400/16GB/1TB + 512GB SSD/RTX 3060",
@@ -88,7 +120,11 @@
       "ObjectID": 7
     },
     {
+<<<<<<< HEAD
       "img": "require('pc9.jpg')",
+=======
+      "img": "pc9.jpg",
+>>>>>>> master
       "name": "MSI Creator P100X",
       "url":"https://www.pccomponentes.com/legion-q-tracker-lambda-intel-core-i5-10400-16gb-1tb-250gb-ssd-gt-1030",
       "caract": "Intel Core i7-11700K/64GB/2TB+1TB SSD/RTX 3080",
@@ -98,7 +134,11 @@
       "ObjectID": 8
     },
     {
+<<<<<<< HEAD
       "img": "require('pc10.jpg')",
+=======
+      "img": "pc10.jpg",
+>>>>>>> master
       "name": "Zone Evil Silver82",
       "url":"https://www.pccomponentes.com/zone-evil-silver82-intel-core-i5-11400-32gb-1tb-500gb-ssd-rtx-3060ti",
       "caract": "Intel Core i5-11400/32GB/1TB+500GB SSD/RTX 3060Ti",
@@ -108,7 +148,11 @@
       "ObjectID": 9
     },
     {
+<<<<<<< HEAD
       "img": "require('pc11.jpg')",
+=======
+      "img": "pc11.jpg",
+>>>>>>> master
       "name": "Legion-Q Oak7 WaterForce",
       "url":"https://www.pccomponentes.com/legion-q-oak7-waterforce-intel-core-i7-11700f-32gb-2tb-1tb-ssd-rtx-3060",
       "caract": "Intel Core i7-11700F/32GB/2TB+1TB SSD/RTX 3060",
@@ -118,7 +162,11 @@
       "ObjectID": 10
     },
     {
+<<<<<<< HEAD
       "img": "require('pc12.jpg')",
+=======
+      "img": "pc12.jpg",
+>>>>>>> master
       "name": "Zone Evil Diamond89ROG",
       "url":"https://www.pccomponentes.com/zone-evil-diamond89rog-intel-core-i9-10900f-32gb-1tb-500gb-ssd-rtx-3060ti",
       "caract": "Intel Core i9-10900F/32GB/1TB+500GB SSD/RTX 3060Ti",
@@ -128,7 +176,11 @@
       "ObjectID": 11
     },
     {
+<<<<<<< HEAD
       "img": "require('pc13.jpg')",
+=======
+      "img": "pc13.jpg",
+>>>>>>> master
       "name": "Dell Vostro 3681",
       "url":"https://www.pccomponentes.com/dell-vostro-3681-intel-core-i5-10400-8gb-256gb-ssd ",
       "caract": "Intel Core i5-10400/8GB/256GB SSD",
