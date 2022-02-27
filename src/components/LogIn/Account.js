@@ -94,7 +94,6 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
                     <span className={`${isClicked.tournaments ? "clicked" : ""} login__account__nav--link`} onClick={() => handleClick("tournaments")}>Torneos</span>
                     <span className={`${isClicked.restaurant ? "clicked" : ""} login__account__nav--link`} onClick={() => handleClick("restaurant")}>Restaurante</span>
                     <span className={`${isClicked.shop ? "clicked" : ""} login__account__nav--link`} onClick={() => handleClick("shop")}>Tienda</span>
-                    <span className="login__account__nav--total" >Total: </span>
                     <button className="login__account__nav--logout" onClick={() => {
                         sessionStorage.clear();
                         setAccount(null);

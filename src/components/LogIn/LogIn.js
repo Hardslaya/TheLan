@@ -1,5 +1,6 @@
 import { useEffect, useState, useReducer } from "react";
 import { apiReducer, API_ACTIONS, fetchApi } from "../../helpers/fetchApi";
+import Footer from "../Footer";
 import Account from "./Account";
 import Form from "./Form";
 
@@ -24,11 +25,7 @@ function logInReducer( state, action ){
     }
 };
 
-const userId = /*JSON.parse(sessionStorage.getItem("account")).id*/ 123;
-
 const LogIn = () => {
-
-    //console.log();
 
     useEffect(() => {
         fetchApi(API_ENDPOINT, dispatchApi, API_ACTIONS);
@@ -47,7 +44,6 @@ const LogIn = () => {
         if(apiState.data.filter(account => account.name === details.user || account.email === details.user && account.password === details.password).length > 0){           
             setAccountId(apiState.data.filter(account => account.name === details.user || account.email === details.user && account.password === details.password)[0].id);
             logInDispatch({ type: LOGIN_ACTIONS.LOGIN_SUCCESS});
-            //sessionStorage.setItem("user", accountId); //No debería almacenar el id, debería tener toda la cuenta
         } else logInDispatch({ type: LOGIN_ACTIONS.LOGIN_ERROR})
     }
 
@@ -66,7 +62,8 @@ const LogIn = () => {
                 </div>
             :
                 <Account logInDispatch={logInDispatch} LOGIN_ACTIONS={LOGIN_ACTIONS} accountId={accountId}/>
-            }        
+            }  
+            <Footer />      
         </>  
     );
 }

@@ -1,6 +1,12 @@
 
 .login{
-    background-image: linear-gradient(to right bottom, pink, rgb(142, 142, 182));
+    //background-image: linear-gradient(to right bottom, pink, rgb(142, 142, 182));
+    background: linear-gradient(0deg, 
+        rgba(42,42,42,1) 0%,  
+        rgba(40,40,40,1) 50%,
+        rgba(35,35,35,1) 65%, 
+        rgba(28,28,28,1) 90%,
+        rgba(20,20,20,1) 100%);
     background-position: center;
     background-size: cover;
     min-height: 85vh;
@@ -11,7 +17,12 @@
     &__bg{
         height: 100%;
         width: 100%;
-        background-image: url("../../img/bgLogin.jpg");
+        background: linear-gradient(0deg, 
+        rgba(42,42,42,1) 0%,  
+        rgba(40,40,40,1) 50%,
+        rgba(35,35,35,1) 65%, 
+        rgba(28,28,28,1) 90%,
+        rgba(20,20,20,1) 100%);
     }
 
     & input, 
@@ -129,7 +140,7 @@
         }
 
         &__nav{
-            background-color: rgba(64, 224, 208, 0.5);
+            background-color: rgba(0, 168, 126, 0.5);
             flex-basis: 20%;
 
             display: flex;
@@ -250,7 +261,7 @@
                 margin: 3rem auto;
                 padding: 2rem;
                 width: 80%;
-                background-image: linear-gradient(to top right, rgba(64, 224, 208, 0.2), rgba(128, 0, 128, 0.2));
+                background-image: linear-gradient(to top right, rgba(0, 168, 126, 0.3), rgba(128, 0, 128, 0.2));
                 justify-content: center;
                 align-items: center;
                 border: 1px solid gray;
@@ -258,7 +269,7 @@
 
                 & p{
                     color: white;
-                    background-image: linear-gradient(to left, rgba(28, 145, 133, 0.7), rgba(128, 0, 128, 0.5));
+                    background-image: linear-gradient(to left, rgba(0, 168, 126, 0.7), rgba(66, 1, 66, 0.5));
                     font-size: 2rem;
                     margin-bottom: 1.5rem;
                     text-transform: uppercase;
