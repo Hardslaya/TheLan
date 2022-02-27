@@ -131,11 +131,11 @@
     gap: 2rem;
 
     @include respond(tab-land) {
-        //clip-path: polygon(0 0, 50% 2%,100% 0, 100% 100%, 50% 102%, 0 100%);
+        clip-path: polygon(0 0, 50% 2%,100% 0, 100% 100%, 50% 102%, 0 100%);
     }
 
     @include respond(tab-port) {
-        //clip-path: polygon(0 0, 50% 1%,100% 0, 100% 100%, 50% 101%, 0 100%);
+        clip-path: polygon(0 0, 50% 1%,100% 0, 100% 100%, 50% 101%, 0 100%);
     }
 }
 

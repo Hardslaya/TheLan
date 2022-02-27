@@ -1,8 +1,9 @@
 import SectionMeals from "./Meals/SectionMeals.js";
 import SectionDrinks from "./Drinks/SectionDrinks.js";
 import SectionMenu from "./TakeAway/SectionMenu.js";
-import { useEffect, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { fetchApi } from "../../../helpers/fetchApi.js";
+import { OrderContext } from "../../../helpers/orderContext.js";
 
 const API_ENDPOINT = 'http://localhost:3001/menu';
 
@@ -25,7 +26,7 @@ function reducer( state, action ){
     }
 }
 
-const Sections = () => {
+const Sections = ({ order, orderDispatch, total, setTotal }) => {
 
     useEffect(() => {  
         fetchApi(API_ENDPOINT, dispatch, ACTIONS);    
@@ -35,9 +36,10 @@ const Sections = () => {
 
     const menu = [state.data.starters, state.data.mainCourse, state.data.dessert, state.data.beverages];
 
+    const setDisplayOrder = useContext(OrderContext);
+
     return (
         <main className="sections">
-
             { state.isError && <p>Error</p>}
             { state.isLoading ? 
                 <p>Cargando...</p>//poner aquí un gif animado de cargando
@@ -46,7 +48,14 @@ const Sections = () => {
                 <>           
                     <SectionMeals menu={menu}/>
                     <SectionDrinks reducerApi={reducer} ACTIONS_API={ACTIONS}/>
-                    <SectionMenu menu={menu}/>
+                    <SectionMenu 
+                        menu={menu} 
+                        order={order} 
+                        orderDispatch={orderDispatch} 
+                        setDisplayOrder={setDisplayOrder}
+                        total={total}
+                        setTotal={setTotal}
+                    />
                 </>
             }           
         </main>

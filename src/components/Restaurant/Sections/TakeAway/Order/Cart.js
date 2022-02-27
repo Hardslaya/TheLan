@@ -1,8 +1,8 @@
 
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ACTIONS } from "../../../../../helpers/modifyOrder";
 
-const Cart = ({ order, setShow, show, total, orderDispatch }) => {
+const Cart = ({ order, setShow, show, total, orderDispatch, setDisplayOrder }) => {
 
     const handleChange = (e, name) => {       
         if(e.target.value > 0) orderDispatch({ type: ACTIONS.CHANGE_COUNT, payload: { name: name, count: e.target.value }});
@@ -26,15 +26,15 @@ const Cart = ({ order, setShow, show, total, orderDispatch }) => {
                 )
             })        
             }
-            {total > 0 ?
-            <>
-            <span className="cart__total">Total: {total}€</span>
-            <Link to="/Order">
-                <span className="btn--tournament">Ir a caja</span>
-            </Link>
-            </>
-            :
-            <p>No se ha seleccionado ningún plato</p>}   
+            {
+                total > 0 ?
+                <>
+                <span className="cart__total">Total: {total}€</span>
+                <span className="btn--tournament" onClick={() => setDisplayOrder(true)}>Ir a caja</span>
+                </>
+                :
+                <p>No se ha seleccionado ningún plato</p>
+            }   
         </div>
     );
 }

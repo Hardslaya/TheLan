@@ -1,43 +1,38 @@
 import Room from "./Room";
-import { useState } from "react";
 
 const rooms = [
     {
         name: "White Wolf",
-        id: "one_bed_room"
+        id: "one_bed_room",
+        price: 50
     }, 
     {
         name: "Pacific Blue",
-        id: "two_beds_room"
+        id: "two_beds_room",
+        price: 70
     }, 
     {
         name: "Green Hell",
-        id: "three_beds_room"
+        id: "three_beds_room",
+        price: 90
     },
     {
         name: "Royal Red",
-        id: "one_double_room"
+        id: "one_double_room",
+        price: 80
     } 
 ];
 
-const Rooms = ({  }) => {
-
-    const [ isChecked, setIsChecked ] = useState("White Wolf");
-
-    const handleClick = (roomName) => {
-        setIsChecked(roomName)
-    }
-
-    console.log(isChecked)
+const Rooms = ({ handleClick, roomChecked  }) => {
 
     return (
         <>
         <p className="u-margin-bottom-small">Tipo de habitación:</p>
-        <div className="booking__form-group u-margin-bottom-small">  
+        <div className="booking__form__rooms u-margin-bottom-small">  
             {rooms.map(room => {
                 return (
-                <div key={room.name} className="booking__form-group--radio">
-                    <Room room={room} isChecked={isChecked} handleClick={handleClick}/>                     
+                <div key={room.name} className="booking__form__rooms__group">
+                    <Room room={room} roomChecked={roomChecked} handleClick={handleClick}/>                     
                 </div>
                 );
             })}                         

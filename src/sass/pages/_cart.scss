@@ -20,6 +20,7 @@
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
+    gap: 1rem;
 
     overflow: scroll;
 
@@ -32,6 +33,15 @@
         height: 20px;
     }
 
+    @include respond(tab-port){
+        width: 50rem;
+    }
+
+    @include respond(phone){
+        left: 1rem;
+        width: calc(100% - 2rem);
+    }
+
     &--burguer{
         color: white;
         width: 4rem;
@@ -41,8 +51,7 @@
         position: absolute;
         top: 0;
         right: 0;
-
-                
+       
         &::before,
         &::after{
             content: "";
@@ -63,8 +72,6 @@
         }
 
         &:hover{
-            /*cursor: pointer;
-            background-color: rgba(209, 161, 209, 0.514)*/
             color: rgba(58, 25, 61, 0.5);
         }
     }
@@ -77,6 +84,10 @@
         font-size: 3rem;
         letter-spacing: 0.5rem;
         padding: .5rem;
+
+        @include respond(tab-port){
+            font-size: 3.5rem;
+        }
     }
 
     &__order{
@@ -84,6 +95,10 @@
 
         display: flex;
         justify-content: space-around;
+
+        @include respond(tab-port){
+            font-size: 2rem;
+        }
 
         &--name{
             
@@ -99,6 +114,7 @@
 
     &__total{
         font-size: 2rem;
+        margin-bottom: 1rem;
     }
 
     & a{
@@ -123,6 +139,11 @@
         transform: translate(-50%, -50%);
         width: 7rem;
         height: 6rem;
+
+        @include respond(tab-port){
+            width: 8rem;
+            height: 8rem;
+        }
     }
 
     &:hover{

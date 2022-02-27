@@ -21,7 +21,6 @@
     }
 
     &__main{
-        min-height: calc(100vh - 30rem);
         width: 80%;
         margin: 0 auto;
         background-color: white;
@@ -32,11 +31,23 @@
         align-items: center;
         gap: 2rem;
 
+        &__back{
+            margin-left: 2rem;
+            align-self: flex-start;
+            background-image: linear-gradient(to right bottom, white 100%, purple 50%, rgb(175, 48, 69) 50%);
+            cursor: pointer;
+
+            &:hover{
+                background-image: linear-gradient(to right bottom, purple, rgb(175, 48, 69));
+                color: white;
+            }
+        }
+
         &__title{
             font-size: 5rem;
             text-transform: uppercase;
             border-bottom: 1px solid grey;
-            margin-top: 3rem;
+            margin-top: 1rem;
             margin-bottom: 3rem;
         }
 
@@ -50,10 +61,6 @@
 
             &--name{
                 flex-basis: 30%;
-            }
-
-            &--price{
-
             }
 
             &--delete{
@@ -77,6 +84,7 @@
 
     & button{
         margin-top: 4rem;
+        margin-bottom: 4rem;
         appearance: none;
         color: white;
         border: none;

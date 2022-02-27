@@ -24,13 +24,19 @@ function logInReducer( state, action ){
     }
 };
 
+const userId = /*JSON.parse(sessionStorage.getItem("account")).id*/ 123;
+
 const LogIn = () => {
+
+    //console.log();
 
     useEffect(() => {
         fetchApi(API_ENDPOINT, dispatchApi, API_ACTIONS);
     }, [])
 
-    const [ logInState, logInDispatch ] = useReducer( logInReducer, { isLoggedIn: sessionStorage.getItem("user") && true || false, isCorrect: false, isError: false });
+    const [ accountId, setAccountId ] = useState( JSON.parse(sessionStorage.getItem("account")) === null ?  "" : JSON.parse(sessionStorage.getItem("account")).id);
+
+    const [ logInState, logInDispatch ] = useReducer( logInReducer, { isLoggedIn: sessionStorage.getItem("account") && true || false, isCorrect: false, isError: false });
 
     const [ apiState, dispatchApi ] = useReducer(apiReducer, { data: [], isLoading: true, isError: false });
 
@@ -39,12 +45,14 @@ const LogIn = () => {
     const submitHandler = e => {
         e.preventDefault();
         if(apiState.data.filter(account => account.name === details.user || account.email === details.user && account.password === details.password).length > 0){           
-            let account = apiState.data.filter(account => account.name === details.user || account.email === details.user && account.password === details.password)[0].id;
+            setAccountId(apiState.data.filter(account => account.name === details.user || account.email === details.user && account.password === details.password)[0].id);
             logInDispatch({ type: LOGIN_ACTIONS.LOGIN_SUCCESS});
-            sessionStorage.setItem("user", account);
+            //sessionStorage.setItem("user", accountId); //No debería almacenar el id, debería tener toda la cuenta
         } else logInDispatch({ type: LOGIN_ACTIONS.LOGIN_ERROR})
     }
 
+    console.log()
+    
     return ( 
         <>
             {!logInState.isLoggedIn ?
@@ -57,7 +65,7 @@ const LogIn = () => {
                 />
                 </div>
             :
-                <Account logInDispatch={logInDispatch} LOGIN_ACTIONS={LOGIN_ACTIONS}/>
+                <Account logInDispatch={logInDispatch} LOGIN_ACTIONS={LOGIN_ACTIONS} accountId={accountId}/>
             }        
         </>  
     );

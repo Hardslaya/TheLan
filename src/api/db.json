@@ -305,13 +305,13 @@
   "accounts": [
     {
       "id": "123",
-      "roomType": "Pacific Blue",
+      "roomType": "White Wolf",
       "roomPrice": 50,
       "name": "Álvaro García Torres",
       "email": "a.garciatorr@gmail.com",
       "password": "root",
-      "arrivalDate": "20/02/2022",
-      "departureDate": "25/02/2022",
+      "arrivalDate": "2022-02-18",
+      "departureDate": "2022-02-22",
       "tournamentsInvoice": [
         {
           "order": [
@@ -327,13 +327,13 @@
         {
           "order": [
             {
-              "name": "League of legends",
-              "price": 10,
+              "name": "Fortnite",
+              "price": 5,
               "count": 1
             }
           ],
-          "total": 10,
-          "date": "12/02/2022/1644686846886"
+          "total": 5,
+          "date": "17/02/2022/1645089627947"
         },
         {
           "order": [
@@ -344,48 +344,10 @@
             }
           ],
           "total": 5,
-          "date": "12/02/2022/1644686975398"
-        },
-        {
-          "order": [
-            {
-              "name": "Hearthstone",
-              "price": 8,
-              "count": 1
-            }
-          ],
-          "total": 8,
-          "date": "12/02/2022/1644688265901"
-        },
-        {
-          "order": [
-            {
-              "name": "Apex legends",
-              "price": 7,
-              "count": 1
-            }
-          ],
-          "total": 7,
-          "date": "12/02/2022/1644692875251"
+          "date": "26/02/2022/1645903983369"
         }
       ],
       "restaurantInvoice": [
-        {
-          "order": [
-            {
-              "name": "Sopa primavera",
-              "price": 8.99,
-              "count": 1
-            },
-            {
-              "name": "Lettera Trattoria",
-              "price": 7.99,
-              "count": 1
-            }
-          ],
-          "date": "11/02/2022/1644598597184",
-          "total": "16.98"
-        },
         {
           "order": [
             {
@@ -428,45 +390,15 @@
             {
               "name": "Sopa primavera",
               "price": 8.99,
-              "count": 2
-            },
-            {
-              "name": "Lettera Trattoria",
-              "price": 7.99,
-              "count": 2
-            },
-            {
-              "name": "Secreto a la naranja",
-              "price": 12.99,
-              "count": 2
-            },
-            {
-              "name": "Botella de agua",
-              "price": 3.99,
               "count": 1
             }
           ],
-          "date": "12/02/2022/1644702633456",
-          "total": "63.93"
-        },
-        {
-          "order": [
-            {
-              "name": "Sopa primavera",
-              "price": 8.99,
-              "count": 1
-            },
-            {
-              "name": "Lettera Trattoria",
-              "price": 7.99,
-              "count": 1
-            }
-          ],
-          "date": "12/02/2022/1644702671533",
-          "total": "16.98"
+          "date": "17/02/2022/1645089263049",
+          "total": "8.99"
         }
       ],
-      "reserved": true
+      "reserved": true,
+      "isLoading": false
     },
     {
       "id": "224",

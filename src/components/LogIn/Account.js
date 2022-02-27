@@ -2,14 +2,15 @@ import AccountInfo from "./AccountInfo";
 import RestaurantInvoice from "./RestaurantInvoice";
 import TournamentsInvoice from "./TournamentsInvoice";
 import axios from "axios";
-import { useEffect, useState, useReducer } from "react";
+import { useEffect, useState, useReducer, useContext } from "react";
+import { UserContext } from "../../helpers/userContext";
 
-const componentToSHow = (invoiceToShow, accountState) => {
+const componentToShow = (invoiceToShow, accountState, handleDelete) => {
     switch (invoiceToShow){
         case "tournaments":
-            return <TournamentsInvoice accountState={accountState}/>;
+            return <TournamentsInvoice accountState={accountState} handleDelete={handleDelete}/>;
         case "restaurant":
-            return <RestaurantInvoice accountState={accountState}/>;
+            return <RestaurantInvoice accountState={accountState} handleDelete={handleDelete} invoiceType={"tournaments"}/>;
         case "shop":
             return <p>Tienda</p>;
         case "account":
@@ -18,7 +19,6 @@ const componentToSHow = (invoiceToShow, accountState) => {
 }
 
 const navReducer = ( state, action ) => {
-    console.log(state)
     switch(action.type){
         case "account":
             return { account:true, tournaments:false, restaurant: false, shop:false };
@@ -33,13 +33,13 @@ const navReducer = ( state, action ) => {
     }
 }
 
-const Account = ({ logInDispatch, LOGIN_ACTIONS }) => {
+const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
 
-    const user = sessionStorage.getItem("user");
+    const setAccount = useContext(UserContext);
+
+    const API_ENDPOINT = `http://localhost:3001/accounts/${accountId}`;
 
     const [ isClicked, isClickedDispatch ] = useReducer( navReducer, { account:true, tournaments:false, restaurant: false, shop:false });
-
-    const API_ENDPOINT = `http://localhost:3001/accounts/${user}`;
 
     const [ invoiceToShow, setInvoiceToShow ] = useState("account");
 
@@ -48,11 +48,38 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS }) => {
     useEffect(() => {
         let timeout = setTimeout(() => {
             axios.get(API_ENDPOINT)
-            .then(resp => setAccountState({...resp.data, isLoading: false}))
+            .then(resp => {
+                setAccountState({...resp.data, isLoading: false});
+                setAccount({...resp.data, isLoading: false});
+                sessionStorage.setItem("account", JSON.stringify(resp.data));
+            })
             .catch(error => console.log(error))
         }, 1000);
         return () => clearTimeout(timeout);
     }, []);
+
+    const handleDelete = (id, invoiceType) => {
+        switch(invoiceType){
+            case "tournaments":
+                axios.put(API_ENDPOINT, {
+                    ...accountState,
+                    tournamentsInvoice: accountState.tournamentsInvoice.filter(invoice => invoice.date != id)
+                }).then(resp => {
+                    setAccountState({...accountState,
+                    tournamentsInvoice: accountState.tournamentsInvoice.filter(invoice => invoice.date != id)})
+                })
+                .catch($e => console.log($e))
+                break;
+            case "restaurant":
+                axios.put(API_ENDPOINT, {
+                    ...accountState,
+                    restaurantInvoice: accountState.restaurantInvoice.filter(invoice => invoice.date != id)
+                }).then(resp => {
+                    setAccountState({...accountState,
+                    restaurantInvoice: accountState.restaurantInvoice.filter(invoice => invoice.date != id)})
+                })
+                }
+    }
 
     const handleClick = (section) => {
         setInvoiceToShow(section)
@@ -69,13 +96,14 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS }) => {
                     <span className={`${isClicked.shop ? "clicked" : ""} login__account__nav--link`} onClick={() => handleClick("shop")}>Tienda</span>
                     <span className="login__account__nav--total" >Total: </span>
                     <button className="login__account__nav--logout" onClick={() => {
-                        sessionStorage.clear()
+                        sessionStorage.clear();
+                        setAccount(null);
                         logInDispatch({ type: LOGIN_ACTIONS.LOGOUT });
-                    }
-                }>Cerrar sesión</button>
+                        }
+                    }>Cerrar sesión</button>
                 </div>
                 <div className="login__account__details">
-                    { componentToSHow(invoiceToShow, accountState) }                          
+                    { componentToShow(invoiceToShow, accountState, handleDelete) }                          
                 </div>
             </div>
         </div>
