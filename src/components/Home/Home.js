@@ -14,8 +14,7 @@ const Home = () => {
         </div>
         <Booking setDisplayPopUp={setDisplayPopUp}/>
         {displayPopUp.bool && <PopUp displayPopUp={displayPopUp} setDisplayPopUp={setDisplayPopUp}/>}
-
-        
+                
         </>
     );
 }

@@ -6,7 +6,7 @@
 
     display: flex;
     justify-content: space-between;
-
+    position: relative;
 
     .brand{
         color: white;
@@ -24,6 +24,28 @@
         display: flex;
         justify-content: center;
         align-items: stretch;
+        cursor: pointer;
+        margin-right: 10rem;
+
+        @include respond(phone){
+            display: none;
+        }
+
+        &--show{
+            height: 100%;
+            width: 100%;
+            padding: 10rem 5rem;
+            background-image: linear-gradient(to bottom right, purple, turquoise);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            z-index: 10;
+        }
 
         &__links{
             flex: 0 0 60%;
@@ -41,10 +63,102 @@
                 text-transform: uppercase;
                 font-size: 1.5rem;
 
+                @include respond(phone){
+                    font-size: 2rem;
+                    letter-spacing: .5rem;
+                    font-weight: 700;
+                }
+
                 &:hover{
                     background-color: rgb(37, 36, 36);
+                    cursor: pointer;
+
+                    @include respond(phone){
+                        background-color: rgba(37, 36, 36, 0.438);
+                    }
                 }
             }
         }
+    }
+}
+
+.nav-burger{
+    display: none;
+    width: 8rem;
+    height: 8rem;
+    background-color: rgba(0, 0, 0, 0.76);
+    border-radius: 50%;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 5;
+
+    &::before,
+    &::after{
+        content: "";
+        display: block;
+        color: white;
+        height: 1.5rem;
+        width: 4rem;
+        border-top: 2px solid currentColor;
+    }
+
+    &::before{
+        position: absolute;
+        top: calc(50% - 2px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &::after{
+        position: absolute;
+        top: calc(50% + 1.5rem - 4px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-bottom: 2px solid currentColor;
+    }
+
+
+    &:hover{
+        cursor: pointer;
+    }
+
+    @include respond(phone){
+        display: block;
+    }
+}
+
+.exit{
+    display: block;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 20;
+
+    &::before,
+    &::after{
+        content: "";
+        display: inline-block;
+        border-bottom: 3px solid white;
+        width: 4rem;
+        position: inherit;
+        top: 3rem;
+        right: 2rem;
+    }
+    
+    &::before{
+        transform: rotate(40deg);
+    }
+            
+    &::after{
+        transform: rotate(-40deg);
+    }
+
+    &:hover{
+        cursor: pointer;
+        color: rgba(58, 25, 61, 0.5);
     }
 }

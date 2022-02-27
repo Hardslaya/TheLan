@@ -1,22 +1,37 @@
 
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const Nav = ({ account }) => {
+
+    let navigate = useNavigate();
+
+    const [ showNav, setShowNav ] = useState(false);
      
     return(
         <nav className="main-header">
             <h3 className="brand">Logo</h3>
-            <ul className="user-nav">
-                <Link to="/"><li className="user-nav__links user-nav__links--link">Home</li></Link>
-                <Link to="/Restaurant"><li className="user-nav__links user-nav__links--link">Restaurante</li></Link>
-                <Link to="/LogIn"><li className="user-nav__links user-nav__links--link">
+            <span className={showNav ? "exit" : "nav-burger"} onClick={() => setShowNav(!showNav)}/>
+            <ul className={showNav ? "user-nav--show" : "user-nav"}>
+                <li className="user-nav__links user-nav__links--link" onClick={() => {
+                    setShowNav(false)
+                    navigate("/")}
+                }>Home</li>
+                <li className="user-nav__links user-nav__links--link" onClick={() => {
+                    setShowNav(false)
+                    navigate("/Restaurant")}
+                }>Restaurante</li>
+                <li className="user-nav__links user-nav__links--link" onClick={() => {
+                    setShowNav(false)
+                    navigate("/LogIn")}
+                }>
                     {
                         account !== null ?
                             "Mi cuenta"
                         :
                             "Log in"
                     }
-                </li></Link>            
+                </li>            
             </ul>
         </nav>
     );

@@ -57,12 +57,12 @@ const Order = ({ order, orderDispatch, setDisplayOrder, total, setTotal }) => {
                     }
 
                     {total > 0 && <span className="order__total">Total: {total}€</span>}
-                    {!sessionStorage.getItem("user") && total > 0 &&
+                    {!account && total > 0 &&
                         <Link to='/LogIn'>
                             <button disabled={total <= 0 ? true : false}>Hacer pedido</button>
                         </Link>
                     }
-                    { sessionStorage.getItem("user") && localStorage.getItem("order") && total > 0 && <button disabled={total <= 0 ? true : false} onClick={() => postRequest()}>Hacer pedido</button> }
+                    { account && localStorage.getItem("order") && total > 0 && <button disabled={total <= 0 ? true : false} onClick={() => postRequest()}>Hacer pedido</button> }
                 </div>
             <div className="order__image order__image--right"/>
         </div>

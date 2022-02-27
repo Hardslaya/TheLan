@@ -1,13 +1,13 @@
 import InvoiceDetails from "./InvoiceDetails";
 
-const TournamentsInvoice = ({ accountState }) => {
+const TournamentsInvoice = ({ accountState, handleDelete }) => {
     return (
         <>
         <h1>Registro en Torneos</h1>
         {accountState.tournamentsInvoice.length > 0 ?
             accountState.tournamentsInvoice.map((invoice) => {
                 return (
-                    <InvoiceDetails key={invoice.date} invoice={invoice} accountState={accountState}/> 
+                    <InvoiceDetails key={invoice.date} invoice={invoice} handleDelete={handleDelete} invoiceType={"tournaments"}/> 
                 )
             })
         :

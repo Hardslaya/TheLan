@@ -1,6 +1,6 @@
 import InvoiceDetails from "./InvoiceDetails";
 
-const RestaurantInvoice = ({ accountState }) => {
+const RestaurantInvoice = ({ accountState, handleDelete }) => {
     
     return (
         <>
@@ -8,7 +8,7 @@ const RestaurantInvoice = ({ accountState }) => {
         {accountState.restaurantInvoice.length > 0 ?
             accountState.restaurantInvoice.map((invoice) => {
                 return (
-                    <InvoiceDetails key={invoice.date} invoice={invoice}/>
+                    <InvoiceDetails key={invoice.date} invoice={invoice} handleDelete={handleDelete} invoiceType={"restaurant"}/>
                 )
             })
         :

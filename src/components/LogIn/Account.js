@@ -5,12 +5,12 @@ import axios from "axios";
 import { useEffect, useState, useReducer, useContext } from "react";
 import { UserContext } from "../../helpers/userContext";
 
-const componentToShow = (invoiceToShow, accountState) => {
+const componentToShow = (invoiceToShow, accountState, handleDelete) => {
     switch (invoiceToShow){
         case "tournaments":
-            return <TournamentsInvoice accountState={accountState}/>;
+            return <TournamentsInvoice accountState={accountState} handleDelete={handleDelete}/>;
         case "restaurant":
-            return <RestaurantInvoice accountState={accountState}/>;
+            return <RestaurantInvoice accountState={accountState} handleDelete={handleDelete} invoiceType={"tournaments"}/>;
         case "shop":
             return <p>Tienda</p>;
         case "account":
@@ -33,19 +33,17 @@ const navReducer = ( state, action ) => {
     }
 }
 
-const Account = ({ logInDispatch, LOGIN_ACTIONS }) => {
+const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
 
-    const user = sessionStorage.getItem("user");
+    const setAccount = useContext(UserContext);
 
-    const API_ENDPOINT = `http://localhost:3001/accounts/${user}`;
+    const API_ENDPOINT = `http://localhost:3001/accounts/${accountId}`;
 
     const [ isClicked, isClickedDispatch ] = useReducer( navReducer, { account:true, tournaments:false, restaurant: false, shop:false });
 
     const [ invoiceToShow, setInvoiceToShow ] = useState("account");
 
     const [ accountState, setAccountState ] = useState({ isLoading: true });
-
-    const setAccount = useContext(UserContext);
 
     useEffect(() => {
         let timeout = setTimeout(() => {
@@ -59,6 +57,29 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS }) => {
         }, 1000);
         return () => clearTimeout(timeout);
     }, []);
+
+    const handleDelete = (id, invoiceType) => {
+        switch(invoiceType){
+            case "tournaments":
+                axios.put(API_ENDPOINT, {
+                    ...accountState,
+                    tournamentsInvoice: accountState.tournamentsInvoice.filter(invoice => invoice.date != id)
+                }).then(resp => {
+                    setAccountState({...accountState,
+                    tournamentsInvoice: accountState.tournamentsInvoice.filter(invoice => invoice.date != id)})
+                })
+                .catch($e => console.log($e))
+                break;
+            case "restaurant":
+                axios.put(API_ENDPOINT, {
+                    ...accountState,
+                    restaurantInvoice: accountState.restaurantInvoice.filter(invoice => invoice.date != id)
+                }).then(resp => {
+                    setAccountState({...accountState,
+                    restaurantInvoice: accountState.restaurantInvoice.filter(invoice => invoice.date != id)})
+                })
+                }
+    }
 
     const handleClick = (section) => {
         setInvoiceToShow(section)
@@ -82,7 +103,7 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS }) => {
                     }>Cerrar sesión</button>
                 </div>
                 <div className="login__account__details">
-                    { componentToShow(invoiceToShow, accountState) }                          
+                    { componentToShow(invoiceToShow, accountState, handleDelete) }                          
                 </div>
             </div>
         </div>

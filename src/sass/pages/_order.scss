@@ -21,7 +21,6 @@
     }
 
     &__main{
-        //min-height: calc(100vh - 30rem);
         width: 80%;
         margin: 0 auto;
         background-color: white;
@@ -85,6 +84,7 @@
 
     & button{
         margin-top: 4rem;
+        margin-bottom: 4rem;
         appearance: none;
         color: white;
         border: none;

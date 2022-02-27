@@ -11,7 +11,7 @@ function Card({ game, handleClick }){
             <p className="tournament-ad__info--text">{game.places}/plazas</p><hr />
             <p className="tournament-ad__info--text">{game.price}€/participante</p>
             {
-                sessionStorage.getItem("user") === null ? 
+                sessionStorage.getItem("account") === null ? 
                 <span className="btn--tournament" onClick={() => navigate("/LogIn")}>Registrate</span>
                 :
                 <button className="btn--tournament" onClick={() => handleClick(game.name, game.price)}>Registrate</button>
