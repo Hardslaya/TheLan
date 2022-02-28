@@ -155,7 +155,7 @@
                 & button{
                     margin-top: auto;
                     margin-bottom: auto;
-                    margin-left: auto;                  
+                    margin-left: 2rem;                  
                 }
             }
 
@@ -168,6 +168,7 @@
 
                 & button{
                     margin: auto;
+                    margin-top: 3rem;
                 }
             }
 
@@ -211,22 +212,29 @@
 
             &--logout{
                 margin-top: auto;
-                margin-bottom: 1rem;
+                margin-bottom: 2rem;
                 align-self: center;
-                cursor: pointer;
-                padding: 1rem 2rem;
-                border-radius: 10px;
+                width: 15rem !important;
             }
         }
 
         &__details{
             background-color: white;
             height: inherit;
+            position: relative;
 
             flex-basis: 80%;
 
+            @include respond(tab-land){
+                min-height: 85vh;
+            }
+
             @include respond(tab-port){
                 padding-top: 5rem;
+            }
+
+            & .none{
+                margin-top: 5rem;
             }
 
             & h1{

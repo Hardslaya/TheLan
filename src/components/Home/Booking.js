@@ -90,7 +90,7 @@ const Booking = ({setDisplayPopUp }) => {
                         <input 
                             type="submit" 
                             value="Reservar" 
-                            className="booking__form__input--submit btn__main" 
+                            className="boton" 
                         />
                     }
                 </form>

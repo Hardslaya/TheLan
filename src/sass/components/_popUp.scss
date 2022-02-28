@@ -74,7 +74,13 @@
         flex-direction: column;
         justify-content: flex-start;
         align-content: center;
-        gap: 2rem;      
+        gap: 2rem; 
+        
+        @include respond(phone){
+            width: 90%;
+            min-width: 45rem;
+            height: 55rem;
+        }
 
         &--name{
             color: white;

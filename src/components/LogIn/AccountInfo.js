@@ -14,7 +14,7 @@ const AccountInfo = ({ accountState }) => {
         <>
         <h1>Mi cuenta</h1>
         {accountState.isLoading ?
-        <p>Loading...</p>
+        <img className="loading" src={require("../../img/loading.gif")}/>
         :
         <>
         <div className="login__account__details__general">

@@ -9,11 +9,8 @@ const courses = ["Entrantes", "Platos principales", "Postres", "Bebidas"];
 
 const Courses = ({ menu, handleClick, setShow, show }) => { 
     
-    useEffect(() => {
-        let timeout = setTimeout(() => {
-            fetchApi(API_ENDPOINT, dispatchApi, API_ACTIONS);
-        }, 1000);
-        return () => clearTimeout(timeout);
+    useEffect(() => {      
+        fetchApi(API_ENDPOINT, dispatchApi, API_ACTIONS);
     }, [])
 
     const [ foodFilter, setFoodFilter ] = useState([]);

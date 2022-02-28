@@ -1,22 +1,9 @@
 import AccountInfo from "./AccountInfo";
-import RestaurantInvoice from "./RestaurantInvoice";
-import TournamentsInvoice from "./TournamentsInvoice";
 import axios from "axios";
 import { useEffect, useState, useReducer, useContext } from "react";
 import { UserContext } from "../../helpers/userContext";
+import Invoice from "./Invoice";
 
-const componentToShow = (invoiceToShow, accountState, handleDelete) => {
-    switch (invoiceToShow){
-        case "tournaments":
-            return <TournamentsInvoice accountState={accountState} handleDelete={handleDelete}/>;
-        case "restaurant":
-            return <RestaurantInvoice accountState={accountState} handleDelete={handleDelete} invoiceType={"tournaments"}/>;
-        case "shop":
-            return <p>Tienda</p>;
-        case "account":
-            return <AccountInfo accountState={accountState}/>
-    }
-}
 
 const navReducer = ( state, action ) => {
     switch(action.type){
@@ -90,11 +77,11 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
         <div className="login__bg">
             <div className="login__account">
                 <div className="login__account__nav">
-                    <span className={`${isClicked.account ? "clicked" : ""} login__account__nav--link`} onClick={() => handleClick("account")}>Mi cuenta</span>
-                    <span className={`${isClicked.tournaments ? "clicked" : ""} login__account__nav--link`} onClick={() => handleClick("tournaments")}>Torneos</span>
-                    <span className={`${isClicked.restaurant ? "clicked" : ""} login__account__nav--link`} onClick={() => handleClick("restaurant")}>Restaurante</span>
-                    <span className={`${isClicked.shop ? "clicked" : ""} login__account__nav--link`} onClick={() => handleClick("shop")}>Tienda</span>
-                    <button className="login__account__nav--logout" onClick={() => {
+                    <span className={`${isClicked.account ? "clicked" : ""} login__account__nav--link`} onClick={() => !accountState.isLoading && handleClick("account")}>Mi cuenta</span>
+                    <span className={`${isClicked.tournaments ? "clicked" : ""} login__account__nav--link`} onClick={() => !accountState.isLoading && handleClick("tournaments")}>Torneos</span>
+                    <span className={`${isClicked.restaurant ? "clicked" : ""} login__account__nav--link`} onClick={() => !accountState.isLoading && handleClick("restaurant")}>Restaurante</span>
+                    <span className={`${isClicked.shop ? "clicked" : ""} login__account__nav--link`} onClick={() => !accountState.isLoading && handleClick("shop")}>Tienda</span>
+                    <button className="boton login__account__nav--logout" onClick={() => {
                         sessionStorage.clear();
                         setAccount(null);
                         logInDispatch({ type: LOGIN_ACTIONS.LOGOUT });
@@ -102,7 +89,12 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
                     }>Cerrar sesión</button>
                 </div>
                 <div className="login__account__details">
-                    { componentToShow(invoiceToShow, accountState, handleDelete) }                          
+                    { 
+                        invoiceToShow === "account" ?
+                        <AccountInfo accountState={accountState}/>
+                        :
+                        <Invoice invoiceToShow={invoiceToShow} accountState={accountState} handleDelete={handleDelete}/>
+                    }                          
                 </div>
             </div>
         </div>
