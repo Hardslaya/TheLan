@@ -337,13 +337,24 @@
         {
           "order": [
             {
-              "name": "Fortnite",
-              "price": 5,
+              "name": "Hearthstone",
+              "price": 8,
               "count": 1
             }
           ],
-          "total": 5,
-          "date": "26/02/2022/1645903983369"
+          "total": 8,
+          "date": "1/03/2022/1646168999864"
+        },
+        {
+          "order": [
+            {
+              "name": "League of legends",
+              "price": 10,
+              "count": 1
+            }
+          ],
+          "total": 10,
+          "date": "1/03/2022/1646169167009"
         }
       ],
       "restaurantInvoice": [

@@ -4,7 +4,6 @@ import { useEffect, useState, useReducer, useContext } from "react";
 import { UserContext } from "../../helpers/userContext";
 import Invoice from "./Invoice";
 
-
 const navReducer = ( state, action ) => {
     switch(action.type){
         case "account":
@@ -33,17 +32,32 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
     const [ accountState, setAccountState ] = useState({ isLoading: true });
 
     useEffect(() => {
-        let timeout = setTimeout(() => {
+        if(!sessionStorage.getItem("account")){
+            let timeout = setTimeout(() => {
+                axios.get(API_ENDPOINT)
+                .then(resp => {
+                    setAccountState({...resp.data, isLoading: false});
+                    setAccount({...resp.data, isLoading: false});
+                    sessionStorage.setItem("account", JSON.stringify(resp.data));
+                })
+                .catch(error => console.log(error))
+            }, 1000);
+            return () => clearTimeout(timeout);
+        } else {
             axios.get(API_ENDPOINT)
-            .then(resp => {
-                setAccountState({...resp.data, isLoading: false});
-                setAccount({...resp.data, isLoading: false});
-                sessionStorage.setItem("account", JSON.stringify(resp.data));
-            })
-            .catch(error => console.log(error))
-        }, 1000);
-        return () => clearTimeout(timeout);
+                .then(resp => {
+                    setAccountState({...resp.data, isLoading: false});
+                    setAccount({...resp.data, isLoading: false});
+                    sessionStorage.setItem("account", JSON.stringify(resp.data));
+                })
+                .catch(error => console.log(error))
+        }
     }, []);
+
+    useEffect(() => {
+        setAccount(accountState);
+    
+    }, [accountState])
 
     const handleDelete = (id, invoiceType) => {
         switch(invoiceType){
@@ -54,7 +68,7 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
                 }).then(resp => {
                     setAccountState({...accountState,
                     tournamentsInvoice: accountState.tournamentsInvoice.filter(invoice => invoice.date != id)})
-                })
+                    })
                 .catch($e => console.log($e))
                 break;
             case "restaurant":

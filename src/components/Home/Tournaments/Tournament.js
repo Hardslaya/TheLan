@@ -22,12 +22,25 @@ const Tournament = ({ setDisplayPopUp }) => {
 
   const handleClick = (name, price) => {  
     let date = getDate();
-    axios.put(`${API_ACCOUNT}${account.id}`, {
-      ...account,
-      tournamentsInvoice: [...account.tournamentsInvoice, { order: [{name: name, price: price, count: 1}], total:price, date: date}],
+    let valid = true;
+    account.account.tournamentsInvoice.filter(tournament => {
+      if(tournament.order[0].name === name){
+        valid = false;
+      }
     })
-    .then(resp => setDisplayPopUp({bool: true, message: "tournament"}))
-    .catch(e => console.log(e))
+    if(valid){
+      axios.put(`${API_ACCOUNT}${account.account.id}`, {
+        ...account.account,
+        tournamentsInvoice: [...account.account.tournamentsInvoice, { order: [{name: name, price: price, count: 1}], total:price, date: date}],
+      })
+      .then(resp => {
+        account.setAccount(resp.data);
+        setDisplayPopUp({bool: true, message: "tournament"});
+      })
+      .catch(e => console.log(e))
+    } else {
+      setDisplayPopUp({bool: true, message: "tournament", error: true});
+    }
   }
   
   return (

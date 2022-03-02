@@ -17,14 +17,19 @@ const ACTIONS_BOOKING = {
     BOOKING_ERROR: "booking_error"
 }
 
-const bookingReducer = ( state, action ) => {   
-    console.log(action.payload < currentDate)
+const bookingReducer = ( state, action ) => { 
+    const date = new Date(action.payload); 
+    const current = new Date(currentDate);
     switch(action.type){
         case ACTIONS_BOOKING.SET_ARRIVAL:
-            if(action.payload < currentDate || (state.departure && action.payload > state.departure)) return {...state, isArrivalError: true};
+            const departure = new Date(state.departure);
+            if(date.getTime() < current.getTime() || date.getTime() > departure.getTime()){
+                return {...state, isArrivalError: true};
+            } 
             else return {...state, arrival: action.payload, isArrivalError: false};
         case ACTIONS_BOOKING.SET_DEPARTURE:
-            if(action.payload < state.arrival) return {...state, isDepartureError: true};
+            const arrival = new Date(state.arrival);
+            if(date.getTime() < current.getTime() || date.getTime() < arrival.getTime()) return {...state, isDepartureError: true};
             else return {...state, departure: action.payload, isDepartureError: false};
         case ACTIONS_BOOKING.SET_ROOM:
             return {...state, room: action.payload.name, roomPrice: action.payload.price};
@@ -46,7 +51,6 @@ const Booking = ({setDisplayPopUp }) => {
     const [ bookingState, bookingDispatch ] = useReducer( bookingReducer, { arrival: "", departure: "", isArrivalError: false, isDepartureError: false, room: roomChecked.name, roomPrice: roomChecked.price});
 
     const handleClick = (roomName, roomPrice) => {
-        console.log(roomPrice)
         setRoomChecked({ name: roomName, price: roomPrice })
         bookingDispatch({ type: ACTIONS_BOOKING.SET_ROOM, payload: { name: roomName, price: roomPrice} })
     }

@@ -21,9 +21,7 @@ const Invoice = ({ invoiceToShow, accountState, handleDelete }) => {
                 setTitle("Pedidos de la tienda");
                 break;
         }
-    }, [invoiceToShow])
-
-    console.log(invoiceToShow)
+    }, [invoiceToShow, accountState])
 
     return (
         <>
