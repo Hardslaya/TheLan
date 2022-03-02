@@ -1,5 +1,5 @@
 .mainheader{
-    height: calc(100vh - 7rem);
+    height: calc(100vh - 10rem);
     background-image: url('./../../img/portada.jpg');
     background-size: cover;
     background-position: top;
@@ -7,14 +7,14 @@
     &:before{
         content: "";
         position: absolute;//nos obliga a posicionar todo
-        top: 7rem;
+        top: 10rem;
         bottom: 0;
         left: 0;
         right: 0;
         background-color: $color-blackA1;
     }
 
-   & -logo{
+   &-logo{
         padding: 2rem;
         width: 10rem;
         height: 10rem;
