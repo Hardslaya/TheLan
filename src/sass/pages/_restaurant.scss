@@ -483,7 +483,6 @@
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
-        //gap: 5rem;
 
         &__filters{
             width: 100%;
@@ -533,6 +532,11 @@
                 align-items: center;
                 gap: 6rem;
 
+                @include respond(phone){
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+
                 &--name{
                     width: 50%;
                 }
@@ -569,22 +573,6 @@
             @include respond(tab-port){
                 flex-direction: column;
             }
-
-            /*&:last-of-type{
-                flex-direction: column;
-            } 
-            
-            &:last-of-type &__dish{
-                width: 70%;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                gap: 6rem;
-
-                &--name{
-                    width: 50%;
-                }
-            }*/
     
             &__dish{
                 display: flex;

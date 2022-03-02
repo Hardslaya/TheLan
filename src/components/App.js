@@ -22,7 +22,7 @@ function App() {
       <Nav account={account}/>    
         <Routes>
             <Route exact path="/" element={<UserContext.Provider value={{account:account, setAccount:setAccount}}><Home /></UserContext.Provider>} />
-            <Route path="/LogIn" element={<UserContext.Provider value={setAccount}><LogIn/></UserContext.Provider>} />
+            <Route path="/LogIn" element={<UserContext.Provider value={{account:account, setAccount:setAccount}}><LogIn/></UserContext.Provider>} />
             <Route path="/Restaurant" element={<UserContext.Provider value={account}><Restaurant /></UserContext.Provider>} />
             <Route path="/Shop" element={<Shop />} />
         </Routes>          

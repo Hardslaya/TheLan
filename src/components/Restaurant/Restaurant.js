@@ -3,13 +3,11 @@ import Hero from "./Hero.js";
 import Sections from "./Sections/Sections";
 import Footer from "../Footer";
 import Order from "./Sections/TakeAway/Order/Order";
-import { createContext, useState, useReducer, useEffect } from "react";
+import { useState, useReducer, useEffect } from "react";
 import { orderReducer } from "../../helpers/modifyOrder";
 import useSemiPersistentEffect from "../../customHooks/useSemipersistentState";
 import { updateTotal } from "../../helpers/updateTotal";
 import { OrderContext } from "../../helpers/orderContext.js";
-
-//const OrderContext = createContext();
 
 const Restaurant = () => {
 

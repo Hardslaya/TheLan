@@ -62,7 +62,12 @@
         gap: 2rem;
 
         @include respond(phone){
-            width: 40rem;
+            width: 45rem;
+        }
+
+        &--switch{
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         &__title{
@@ -109,6 +114,7 @@
             }
             
             &--submit{
+                margin-top: 2rem;
                 display: inline-block;
                 padding: 1rem 2rem;
                 font-weight: 700;
@@ -120,6 +126,12 @@
                 &:hover{
                     transform: translateY(-2px);
                 }
+            }
+
+            &--error{
+                position: absolute;
+                color: #FE4880;
+                top: 62%;
             }
         }
     }
@@ -238,7 +250,7 @@
                         right: -8rem;
                         border: 4rem solid;
                         border-color: transparent transparent transparent rgba(128, 0, 128);
-                        z-index: 100;
+                        z-index: 5;
                     }
                 }
             }
@@ -253,7 +265,7 @@
                     position: absolute;
                     right: 6rem;
                     top: 130%;
-                    z-index: 100;
+                    z-index: 3;
                     color: purple !important;
                 }
 

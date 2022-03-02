@@ -42,7 +42,7 @@ const Sections = ({ order, orderDispatch, total, setTotal }) => {
         <main className="sections">
             { state.isError && <p>Error</p>}
             { state.isLoading ? 
-                <p>Cargando...</p>//poner aquí un gif animado de cargando
+                <p>Cargando...</p>
                 : 
                 !state.isError && !menu.includes(undefined) &&
                 <>           

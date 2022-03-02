@@ -21,7 +21,7 @@ const navReducer = ( state, action ) => {
 
 const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
 
-    const setAccount = useContext(UserContext);
+    const account = useContext(UserContext);
 
     const API_ENDPOINT = `http://localhost:3001/accounts/${accountId}`;
 
@@ -37,7 +37,7 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
                 axios.get(API_ENDPOINT)
                 .then(resp => {
                     setAccountState({...resp.data, isLoading: false});
-                    setAccount({...resp.data, isLoading: false});
+                    account.setAccount({...resp.data, isLoading: false});
                     sessionStorage.setItem("account", JSON.stringify(resp.data));
                 })
                 .catch(error => console.log(error))
@@ -47,7 +47,7 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
             axios.get(API_ENDPOINT)
                 .then(resp => {
                     setAccountState({...resp.data, isLoading: false});
-                    setAccount({...resp.data, isLoading: false});
+                    account.setAccount({...resp.data, isLoading: false});
                     sessionStorage.setItem("account", JSON.stringify(resp.data));
                 })
                 .catch(error => console.log(error))
@@ -55,7 +55,7 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
     }, []);
 
     useEffect(() => {
-        setAccount(accountState);    
+        account.setAccount(accountState);    
     }, [accountState])
 
     const handleDelete = (id, invoiceType) => {
@@ -96,7 +96,7 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
                     <span className={`${isClicked.shop ? "clicked" : ""} login__account__nav--link`} onClick={() => !accountState.isLoading && handleClick("shop")}>Tienda</span>
                     <button className="boton login__account__nav--logout" onClick={() => {
                         sessionStorage.clear();
-                        setAccount(null);
+                        account.setAccount(null);
                         logInDispatch({ type: LOGIN_ACTIONS.LOGOUT });
                         }
                     }>Cerrar sesión</button>

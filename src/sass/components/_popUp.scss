@@ -7,6 +7,17 @@
     left: 0;
     z-index: 10;
 
+    &--delete{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+
+        & p{
+            width: 6rem;
+        }
+    }
+
     &__message,
     &__main{
         position: fixed;
@@ -53,7 +64,6 @@
     }
 
     &__message{
-        //background-image: linear-gradient(to right, grey, rgb(107, 107, 107));
         background-color: white;
         color: black;
         min-height: 20rem;
@@ -100,7 +110,7 @@
         gap: 2rem; 
         
         @include respond(phone){
-            width: 90%;
+            width: 80%;
             min-width: 45rem;
             height: 55rem;
         }
@@ -134,6 +144,10 @@
             justify-content: center;
             align-items: center;
 
+            @include respond(phone){
+                outline: none;
+            }
+
             & img{
                 width: 100%;
                 position: absolute;
@@ -163,4 +177,12 @@
             -2px -2px 5px rgba(0, 0, 0);
         }
     }
+}
+
+.yes{
+    background: yellowgreen !important;
+}
+
+.no{
+    background: red !important;
 }

@@ -315,17 +315,6 @@
         {
           "order": [
             {
-              "name": "League of legends",
-              "price": 10,
-              "count": 1
-            }
-          ],
-          "total": 10,
-          "date": "2/03/2022/1646210969842"
-        },
-        {
-          "order": [
-            {
               "name": "Fortnite",
               "price": 5,
               "count": 1
@@ -396,21 +385,19 @@
           "total": "8.99"
         }
       ],
-      "reserved": true,
       "isLoading": false
     },
     {
       "id": "224",
-      "roomType": "White Wolf",
-      "roomPrice": 70,
+      "roomType": "",
+      "roomPrice": 0,
       "name": "Juan Robles Castro",
       "email": "j.rocastro@gmail.com",
       "password": "root",
-      "arrivalDate": "01/03/2022",
-      "departureDate": "11/03/2022",
+      "arrivalDate": "",
+      "departureDate": "",
       "tournamentsInvoice": [],
-      "restaurantInvoice": [],
-      "reserved": false
+      "restaurantInvoice": []
     }
   ]
 }

@@ -1,11 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
+import PopUpInfo from "./PopUpInfo";
 
 const InvoiceDetails = ({ invoice, handleDelete, invoiceType }) => {
 
     const [ display, setDisplay] = useState("none");
 
+    const [ displayPopUp, setDisplayPopUp] = useState(false);
+
     return (
+        <>
         <div key={invoice.date} className="login__account__details__order">
             <div className="login__account__details__restaurant">
                 <span>Fecha: {invoice.date.slice(0,10)}</span>
@@ -14,7 +18,7 @@ const InvoiceDetails = ({ invoice, handleDelete, invoiceType }) => {
                     <div className="login__account__details__restaurant--image"> 
                         <img onClick={() => setDisplay( display === "none" ? "flex" : "none")} src={require("../../img/threeDots.png")}/>
                     </div>
-                <img src={require("../../img/delete.png")} className="order__main__item--delete delete" onClick={() => handleDelete(invoice.date, invoiceType)}/>
+                <img src={require("../../img/delete.png")} className="order__main__item--delete delete" onClick={() => setDisplayPopUp(true)}/*handleDelete(invoice.date, invoiceType)}*//>
                 </div>
             </div>
             <div className="login__account__details__restaurant__order" style={{display: display}}>
@@ -37,6 +41,8 @@ const InvoiceDetails = ({ invoice, handleDelete, invoiceType }) => {
                 }
             </div>
         </div>
+        {displayPopUp && <PopUpInfo displayPopUp={displayPopUp} setDisplayPopUp={setDisplayPopUp} handleDelete={handleDelete} date={invoice.date} invoiceType={invoiceType}/>}
+        </>
     );
 }
 
