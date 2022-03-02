@@ -6,7 +6,7 @@ const Invoice = ({ invoiceToShow, accountState, handleDelete }) => {
     const [ invoiceType, setInvoice ] = useState([]);
     const [ title, setTitle ] = useState("");
 
-    useEffect(() => {
+    useEffect(() => { //determines data to show depending on the user's input
         switch(invoiceToShow){
             case "tournaments":
                 setInvoice(accountState.tournamentsInvoice);

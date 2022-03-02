@@ -12,7 +12,7 @@ const SectionDrinks = ({ reducerApi, ACTIONS_API }) => {
     },[]);
 
     useEffect(() => {   
-        let interval = setInterval(() => {
+        let interval = setInterval(() => { //changes the banner every 5 sec
             updateIndex(activeIndex + 1);
         }, 5000)
         return () => {
@@ -26,7 +26,7 @@ const SectionDrinks = ({ reducerApi, ACTIONS_API }) => {
 
     const banners = stateApi.data;
 
-    const updateIndex = useCallback((newIndex) => {
+    const updateIndex = useCallback((newIndex) => { //changes the index making a loop from 0 to length-1
         if(newIndex < 0) setActiveIndex(banners.length - 1);
         else if(newIndex > banners.length - 1) setActiveIndex(0);
         else setActiveIndex(newIndex);

@@ -15,7 +15,7 @@ const Order = ({ order, orderDispatch, setDisplayOrder, total, setTotal }) => {
     const [ show, setShow ] = useState({ itemInfo:true, orderSuccess: false});
 
     useEffect(() => {
-        if(total <= 0){
+        if(total <= 0){ //when all items are removed from the order
             localStorage.removeItem("order");
         } 
     }, [order]);
@@ -29,8 +29,8 @@ const Order = ({ order, orderDispatch, setDisplayOrder, total, setTotal }) => {
         })
         .then(resp => {
             localStorage.removeItem("order");
-            setTotal(0);
-            setShow({ itemInfo: false, orderSuccess: true });           
+            setTotal(0); //order finished and removed from view 
+            setShow({ itemInfo: false, orderSuccess: true });         
         })
         .catch(error => console.log(error))
     }

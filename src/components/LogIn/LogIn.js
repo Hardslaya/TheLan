@@ -29,12 +29,9 @@ function logInReducer( state, action ){
 
 const LogIn = () => {
 
-    useEffect(() => {
-        fetchApi(API_ENDPOINT, dispatchApi, API_ACTIONS);   
-    }, [])
-
     const account = useContext(UserContext);
 
+    //Identifies current active account
     const [ accountId, setAccountId ] = useState( JSON.parse(sessionStorage.getItem("account")) === null ?  "" : JSON.parse(sessionStorage.getItem("account")).id);
 
     const [ logInState, logInDispatch ] = useReducer( logInReducer, { isLoggedIn: sessionStorage.getItem("account") && true || false, isCorrect: false, isError: false });
@@ -43,9 +40,13 @@ const LogIn = () => {
 
     const [ details, setDetails ] = useState({ user: "", password: ""});
 
-    const [ register, setRegister ] = useState(false);
+    const [ register, setRegister ] = useState(false); //shows sign up or log in
 
-    const [ showError, setShowError ] = useState(false);
+    const [ showError, setShowError ] = useState(false); //resets log in credential's error
+
+    useEffect(() => {
+        fetchApi(API_ENDPOINT, dispatchApi, API_ACTIONS);   
+    }, [register])
 
     useEffect(() => {
         setDetails({...details, password: ""})

@@ -17,7 +17,7 @@ const SectionMeals = ({ menu }) => {
     const [ dishesDisplay, setDishesDisplay ] = useState({ front: dishes[index], back: dishes[index+1]});
 
     function handleClick(){
-        if(turn) setDishName(dishesDisplay.back.name);
+        if(turn) setDishName(dishesDisplay.back.name); 
         else setDishName(dishesDisplay.front.name);
         setDisplayPopUp(true);
     }
@@ -25,9 +25,9 @@ const SectionMeals = ({ menu }) => {
     useEffect(() => {
         const timeOut = setTimeout(() => {
             setTurn(!turn);
-            if(turn) setDishesDisplay({ ...dishesDisplay, front: dishes[index+1]});
+            if(turn) setDishesDisplay({ ...dishesDisplay, front: dishes[index+1]}); //changes the side of the circle that is currently on the back
             else setDishesDisplay({ ...dishesDisplay, back: dishes[index+1]});
-            if(index + 1 < dishes.length - 1) setIndex(index + 1);
+            if(index + 1 < dishes.length - 1) setIndex(index + 1); //loop the dishes
             else setIndex(0);
         },3000);
         return () => clearTimeout(timeOut);

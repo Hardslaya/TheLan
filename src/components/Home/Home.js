@@ -1,9 +1,8 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Tournament from "./Tournaments/Tournament";
 import Booking from "./Booking";
 import PopUp from "./PopUp";
 import Footer from "./../Footer";
-import Navegation from './Header/Navegation';
 import Title from './Header/Title';
 import Reservation from './Header/Reservation';
 import Arrows from './Header/Arrows';
@@ -15,7 +14,6 @@ const Home = () => {
     return (
         <>
         <header className="mainheader">
-            {/*<Navegation />*/}
             <Title />
             <Reservation />
             <Arrows />

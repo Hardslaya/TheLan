@@ -1,9 +1,9 @@
-const transformDate = (date) => {
+const transformDate = (date) => { //formats date to dd-mm-yyyy
     let dateArray = date.split("/");
     return dateArray.reverse().join("/");
 }
 
-const datesDifference = (arrivalDate, departureDate) => {    
+const datesDifference = (arrivalDate, departureDate) => { //calcs total stay in days
     const aDate = new Date(transformDate(arrivalDate));
     const dDate = new Date(transformDate(departureDate));
     return Math.ceil(Math.abs(dDate - aDate) / (1000 * 60 * 60 * 24));

@@ -3,24 +3,6 @@ import PopUp from "./PopUp";
 
 const Image = ({ menu, dishName, turn, handleClick, setDisplayPopUp, displayPopUp, dishesDisplay }) => {
 
-    /*const dishes = menu.slice(0, menu.length - 1).flat();
-
-    const [ index, setIndex ] = useState(0);
-
-    const [ turn, setTurn ] = useState(false);
-
-    const [ dishName, setDishName ] = useState("");
-
-    const [ displayPopUp, setDisplayPopUp ] = useState(false);
-
-    const [ dishesDisplay, setDishesDisplay ] = useState({ front: dishes[index], back: dishes[index+1]});
-
-    function handleClick(){
-        if(turn) setDishName(dishesDisplay.back.name);
-        else setDishName(dishesDisplay.front.name);
-        setDisplayPopUp(true);
-    }*/
-
     return (
         <>
         {displayPopUp && 
@@ -35,7 +17,7 @@ const Image = ({ menu, dishName, turn, handleClick, setDisplayPopUp, displayPopU
                     <span><b>{dishesDisplay.front.name}</b></span>
                 </div>
                 <div className={ turn ? "circle__side circle__side--back circle__turnBack" : "circle__side circle__side--back circle__turnFront" }>
-                <img src={require(`./../../../../img/${dishesDisplay.back.url}`)} alt="Plato" />
+                    <img src={require(`./../../../../img/${dishesDisplay.back.url}`)} alt="Plato" />
                     <span><b>{dishesDisplay.back.name}</b></span>
                 </div>
             </div>

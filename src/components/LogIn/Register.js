@@ -22,7 +22,7 @@ const Register = ({setRegister}) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        if(newAccount.password === newAccount.password2){
+        if(newAccount.password === newAccount.password2){ //checks that the passwords are the same
             axios.post(API_ENDPOINT, {
                 id: "335",
                 roomType: "",
@@ -39,7 +39,7 @@ const Register = ({setRegister}) => {
                 setDisplayPopUp(true);
             })
             .catch(e => console.log(e))
-        } else setIsError(true);
+        } else setIsError(true); //shows error message
     }
 
     return (

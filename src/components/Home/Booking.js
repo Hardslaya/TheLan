@@ -17,7 +17,7 @@ const ACTIONS_BOOKING = {
     BOOKING_ERROR: "booking_error"
 }
 
-const bookingReducer = ( state, action ) => { 
+const bookingReducer = ( state, action ) => { //controls the booking form data
     const date = new Date(action.payload); 
     const current = new Date(currentDate);
     switch(action.type){
@@ -50,19 +50,19 @@ const Booking = ({ setDisplayPopUp }) => {
 
     const [ bookingState, bookingDispatch ] = useReducer( bookingReducer, { arrival: "", departure: "", isArrivalError: false, isDepartureError: false, room: roomChecked.name, roomPrice: roomChecked.price});
 
-    const handleClick = (roomName, roomPrice) => {
+    const handleClick = (roomName, roomPrice) => { //rooms dispatch
         setRoomChecked({ name: roomName, price: roomPrice })
         bookingDispatch({ type: ACTIONS_BOOKING.SET_ROOM, payload: { name: roomName, price: roomPrice} })
     }
 
-    const handleChange = (e) => {
+    const handleChange = (e) => { //dates dispatch
         e.target.name === "arrival_date" ? 
             bookingDispatch({ type: ACTIONS_BOOKING.SET_ARRIVAL, payload: e.target.value })
         :
             bookingDispatch({ type: ACTIONS_BOOKING.SET_DEPARTURE, payload: e.target.value })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e) => { //booking form submit options
         e.preventDefault();
         if(account.account.roomType === "" && bookingState.arrival !== "" && bookingState.departure !== ""){
             axios.put(`${API_ACCOUNT}${account.account.id}`,{

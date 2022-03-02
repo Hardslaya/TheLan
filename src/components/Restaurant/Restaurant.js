@@ -11,13 +11,13 @@ import { OrderContext } from "../../helpers/orderContext.js";
 
 const Restaurant = () => {
 
-  const [order, orderDispatch] = useReducer(orderReducer, JSON.parse(localStorage.getItem('order')) || []);
+  const [order, orderDispatch] = useReducer(orderReducer, JSON.parse(localStorage.getItem('order')) || []); //keeps the cart in the localStorage
 
   const [ total, setTotal ] = useSemiPersistentEffect('total', 0);
 
   const [ displayOrder, setDisplayOrder ] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => { //updates the cart and total when the order is modified
     localStorage.setItem('order', JSON.stringify(order));
     setTotal(updateTotal(order));
   }, [order]);
@@ -25,7 +25,7 @@ const Restaurant = () => {
   return (
     <>
       {
-        displayOrder ? 
+        displayOrder ? //displays the order info or the main page with the menu
           <Order 
             order={order} 
             orderDispatch={orderDispatch} 

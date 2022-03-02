@@ -4,7 +4,7 @@ import { useEffect, useState, useReducer, useContext } from "react";
 import { UserContext } from "../../helpers/userContext";
 import Invoice from "./Invoice";
 
-const navReducer = ( state, action ) => {
+const navReducer = ( state, action ) => { //active link reducer
     switch(action.type){
         case "account":
             return { account:true, tournaments:false, restaurant: false, shop:false };
@@ -25,14 +25,14 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
 
     const API_ENDPOINT = `http://localhost:3001/accounts/${accountId}`;
 
-    const [ isClicked, isClickedDispatch ] = useReducer( navReducer, { account:true, tournaments:false, restaurant: false, shop:false });
+    const [ isClicked, isClickedDispatch ] = useReducer( navReducer, { account:true, tournaments:false, restaurant: false, shop:false }); //determines the active link
 
-    const [ invoiceToShow, setInvoiceToShow ] = useState("account");
+    const [ invoiceToShow, setInvoiceToShow ] = useState("account"); //determines data to show
 
-    const [ accountState, setAccountState ] = useState({ isLoading: true });
+    const [ accountState, setAccountState ] = useState({ isLoading: true }); //active account 
 
     useEffect(() => {
-        if(!sessionStorage.getItem("account")){
+        if(!sessionStorage.getItem("account")){ //timeout for the loading spinner the first time you log in
             let timeout = setTimeout(() => {
                 axios.get(API_ENDPOINT)
                 .then(resp => {
@@ -43,7 +43,7 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
                 .catch(error => console.log(error))
             }, 1000);
             return () => clearTimeout(timeout);
-        } else {
+        } else { //no fake waiting of api's response
             axios.get(API_ENDPOINT)
                 .then(resp => {
                     setAccountState({...resp.data, isLoading: false});
@@ -55,10 +55,10 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
     }, []);
 
     useEffect(() => {
-        account.setAccount(accountState);    
+        account.setAccount(accountState); //updates the current active account when it changes  
     }, [accountState])
 
-    const handleDelete = (id, invoiceType) => {
+    const handleDelete = (id, invoiceType) => { //delete option for invoices
         switch(invoiceType){
             case "tournaments":
                 axios.put(API_ENDPOINT, {

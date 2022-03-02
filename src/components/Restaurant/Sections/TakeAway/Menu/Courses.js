@@ -13,7 +13,7 @@ const Courses = ({ menu, handleClick, setShow, show }) => {
         fetchApi(API_ENDPOINT, dispatchApi, API_ACTIONS);
     }, [])
 
-    const [ foodFilter, setFoodFilter ] = useState([]);
+    const [ foodFilter, setFoodFilter ] = useState([]); //determines the active filters
 
     const [ apiData, dispatchApi ] = useReducer( apiReducer, { data: [],  isLoading: true , isError: false,} );
 
@@ -48,7 +48,7 @@ const Courses = ({ menu, handleClick, setShow, show }) => {
                             <div className="itemsSelection__main__course"> 
                                 {
                                     menu[index].flat().map((meal) => {
-                                        if(foodFilter.length === 0 || course === "Bebidas" || foodFilter.every(i => meal.filters.includes(i)) /*|| meal.filters.includes("lactose", "gluten"))*/){
+                                        if(foodFilter.length === 0 || course === "Bebidas" || foodFilter.every(i => meal.filters.includes(i))){
                                             return ( 
                                                 <div key={meal.name} className="itemsSelection__main__course__dish">
                                                     <Dishes 

@@ -1,7 +1,7 @@
 import Image from "./Image";
 import Card from "./Card";
 import { fetchApi, apiReducer, API_ACTIONS } from "../../../helpers/fetchApi";
-import { useReducer, useEffect, useState, useContext } from "react";
+import { useReducer, useEffect, useContext } from "react";
 import axios from "axios";
 import { getDate } from "../../../helpers/getDate";
 import { UserContext } from "../../../helpers/userContext";
@@ -23,7 +23,7 @@ const Tournament = ({ setDisplayPopUp }) => {
   const handleClick = (name, price) => {  
     let date = getDate();
     let valid = true;
-    account.account.tournamentsInvoice.filter(tournament => {
+    account.account.tournamentsInvoice.filter(tournament => { //checks a previous registration
       if(tournament.order[0].name === name){
         valid = false;
       }

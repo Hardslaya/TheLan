@@ -1,4 +1,3 @@
-import { useState } from "react";
 
 const Form = ({ details, setDetails, submitHandler, logInState, setRegister, showError, setShowError }) => {
 
