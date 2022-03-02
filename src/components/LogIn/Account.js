@@ -32,6 +32,7 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
     const [ accountState, setAccountState ] = useState({ isLoading: true });
 
     useEffect(() => {
+        console.log(sessionStorage.getItem("account"))
         if(!sessionStorage.getItem("account")){
             let timeout = setTimeout(() => {
                 axios.get(API_ENDPOINT)
@@ -55,9 +56,10 @@ const Account = ({ logInDispatch, LOGIN_ACTIONS, accountId }) => {
     }, []);
 
     useEffect(() => {
-        setAccount(accountState);
-    
+        setAccount(accountState);    
     }, [accountState])
+
+    console.log(sessionStorage.getItem("account"))
 
     const handleDelete = (id, invoiceType) => {
         switch(invoiceType){

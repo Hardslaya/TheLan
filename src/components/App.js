@@ -13,8 +13,11 @@ function App() {
   const [ account, setAccount ] = useState( JSON.parse(sessionStorage.getItem("account")) || null );
 
   useEffect(() =>{
-    sessionStorage.setItem("account", JSON.stringify(account));
+    if(account) sessionStorage.setItem("account", JSON.stringify(account));
+    //sessionStorage.setItem("account", JSON.stringify(account));
   }, [account])
+
+  console.log(account)
 
   return (
     <>
