@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import logo from "./../img/logo.png";
 
 const Nav = ({ account }) => {
 
@@ -10,7 +11,7 @@ const Nav = ({ account }) => {
      
     return(
         <nav className="main-header">
-            <h3 className="brand">Logo</h3>
+            <h3 className="brand"><img src={logo}></img></h3>
             <span className={showNav ? "exit" : "nav-burger"} onClick={() => setShowNav(!showNav)}/>
             <ul className={showNav ? "user-nav--show" : "user-nav"}>
                 <li className="user-nav__links user-nav__links--link" onClick={() => {

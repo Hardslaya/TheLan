@@ -15,12 +15,12 @@ const Home = () => {
     return (
         <>
         <header className="mainheader">
-            <Navegation />
+            {/*<Navegation />*/}
             <Title />
             <Reservation />
             <Arrows />
         </header>
-        <div className="section-tournaments">
+        <div className="section-tournaments" id="tournaments">
             <Tournament setDisplayPopUp={setDisplayPopUp}/>
         </div>
         <Booking setDisplayPopUp={setDisplayPopUp}/>

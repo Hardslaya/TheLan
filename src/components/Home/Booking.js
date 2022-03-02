@@ -80,7 +80,7 @@ const Booking = ({ setDisplayPopUp }) => {
     }
 
     return (
-        <section className="section-booking u-margin-bottom-big u-margin-top" >      
+        <section className="section-booking u-margin-bottom-big u-margin-top" id="booking">      
             <div className="booking" onSubmit={handleSubmit}>
                 <div className="booking__image"></div>
                 <form action="." className="booking__form">
