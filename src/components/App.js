@@ -14,7 +14,6 @@ function App() {
 
   useEffect(() =>{
     if(account) sessionStorage.setItem("account", JSON.stringify(account));
-    //sessionStorage.setItem("account", JSON.stringify(account));
   }, [account])
 
   console.log(account)

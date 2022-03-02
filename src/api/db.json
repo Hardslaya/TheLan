@@ -311,52 +311,7 @@
       "password": "root",
       "arrivalDate": "2022-02-18",
       "departureDate": "2022-02-22",
-      "tournamentsInvoice": [
-        {
-          "order": [
-            {
-              "name": "Apex legends",
-              "price": 7,
-              "count": 1
-            }
-          ],
-          "total": 7,
-          "date": "12/02/2022/1644686816243"
-        },
-        {
-          "order": [
-            {
-              "name": "Fortnite",
-              "price": 5,
-              "count": 1
-            }
-          ],
-          "total": 5,
-          "date": "17/02/2022/1645089627947"
-        },
-        {
-          "order": [
-            {
-              "name": "Hearthstone",
-              "price": 8,
-              "count": 1
-            }
-          ],
-          "total": 8,
-          "date": "2/03/2022/1646208733974"
-        },
-        {
-          "order": [
-            {
-              "name": "League of legends",
-              "price": 10,
-              "count": 1
-            }
-          ],
-          "total": 10,
-          "date": "2/03/2022/1646209062421"
-        }
-      ],
+      "tournamentsInvoice": [],
       "restaurantInvoice": [
         {
           "order": [
