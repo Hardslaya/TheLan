@@ -7,7 +7,8 @@ const Dates = ({ handleChange, bookingState }) => {
             <p className="u-margin-bottom-small">Selecciona las fechas:</p>
             <Arrival handleChange={handleChange} bookingState={bookingState}/>
             <Departure handleChange={handleChange} bookingState={bookingState}/>
-            {(bookingState.isArrivalError || bookingState.isDepartureError) && <span className="error">Seleccione una fecha de salida posterior a la de entrada por favor</span>}
+            { bookingState.isArrivalError && <span className="error">Fecha de entrada no válida</span>}
+            { bookingState.isDepartureError && !bookingState.isArrivalError && <span className="error">Fecha de salida no válida</span>}
         </div>
     );
 }

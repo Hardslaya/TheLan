@@ -3,11 +3,11 @@ const info = {
     button: 'Ver más'
 }
 
-const Info = () => {
+const Info = ({ handleClick }) => {
     return (
         <div className="sections__meals--info">
             <span className="text"><i>{info.text}</i></span>
-            <a className="btn btn--more">
+            <a className="btn btn--more" onClick={() => handleClick()}>
                 <span className="more"></span>
                 <span className="text">{info.button}</span>
                 <span className="arrow arrow--right"></span>

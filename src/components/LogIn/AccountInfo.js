@@ -20,7 +20,6 @@ const AccountInfo = ({ accountState }) => {
         <div className="login__account__details__general">
             <p>Datos personales</p>
             <div className="login__account__details__general--inner">
-                <span><b>Habitación:</b> {accountState.id}</span>
                 <span><b>Nombre:</b> {accountState.name}</span>
                 <span><b>Email:</b> {accountState.email}</span>
             </div>

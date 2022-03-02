@@ -1,9 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+
 import PopUp from "./PopUp";
 
-const Image = ({ menu }) => {
+const Image = ({ menu, dishName, turn, handleClick, setDisplayPopUp, displayPopUp, dishesDisplay }) => {
 
-    const dishes = menu.slice(0, menu.length - 1).flat();
+    /*const dishes = menu.slice(0, menu.length - 1).flat();
 
     const [ index, setIndex ] = useState(0);
 
@@ -19,18 +19,7 @@ const Image = ({ menu }) => {
         if(turn) setDishName(dishesDisplay.back.name);
         else setDishName(dishesDisplay.front.name);
         setDisplayPopUp(true);
-    }
-
-    useEffect(() => {
-        const timeOut = setTimeout(() => {
-            setTurn(!turn);
-            if(turn) setDishesDisplay({ ...dishesDisplay, front: dishes[index+1]});
-            else setDishesDisplay({ ...dishesDisplay, back: dishes[index+1]});
-            if(index + 1 < dishes.length - 1) setIndex(index + 1);
-            else setIndex(0);
-        },3000);
-        return () => clearTimeout(timeOut);
-    })
+    }*/
 
     return (
         <>

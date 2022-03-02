@@ -16,8 +16,6 @@ function App() {
     if(account) sessionStorage.setItem("account", JSON.stringify(account));
   }, [account])
 
-  console.log(account)
-
   return (
     <>
     <Router>

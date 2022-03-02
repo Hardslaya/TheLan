@@ -304,14 +304,48 @@
   "accounts": [
     {
       "id": "123",
-      "roomType": "White Wolf",
-      "roomPrice": 50,
+      "roomType": "Green Hell",
+      "roomPrice": 90,
       "name": "Álvaro García Torres",
       "email": "a.garciatorr@gmail.com",
       "password": "root",
-      "arrivalDate": "2022-02-18",
-      "departureDate": "2022-02-22",
-      "tournamentsInvoice": [],
+      "arrivalDate": "2022-03-09",
+      "departureDate": "2022-03-16",
+      "tournamentsInvoice": [
+        {
+          "order": [
+            {
+              "name": "League of legends",
+              "price": 10,
+              "count": 1
+            }
+          ],
+          "total": 10,
+          "date": "2/03/2022/1646210969842"
+        },
+        {
+          "order": [
+            {
+              "name": "Fortnite",
+              "price": 5,
+              "count": 1
+            }
+          ],
+          "total": 5,
+          "date": "2/03/2022/1646211766230"
+        },
+        {
+          "order": [
+            {
+              "name": "Apex legends",
+              "price": 7,
+              "count": 1
+            }
+          ],
+          "total": 7,
+          "date": "2/03/2022/1646224805669"
+        }
+      ],
       "restaurantInvoice": [
         {
           "order": [

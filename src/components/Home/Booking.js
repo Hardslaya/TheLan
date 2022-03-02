@@ -40,7 +40,7 @@ const bookingReducer = ( state, action ) => {
 
 const API_ACCOUNT = `http://localhost:3001/accounts/`;
 
-const Booking = ({setDisplayPopUp }) => {
+const Booking = ({ setDisplayPopUp }) => {
 
     let navigate = useNavigate();
 
@@ -64,16 +64,19 @@ const Booking = ({setDisplayPopUp }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(account.roomType === "" && bookingState.arrival !== "" && bookingState.departure !== ""){
-            axios.put(`${API_ACCOUNT}${account.id}`,{
-                ...account,
+        if(account.account.roomType === "" && bookingState.arrival !== "" && bookingState.departure !== ""){
+            axios.put(`${API_ACCOUNT}${account.account.id}`,{
+                ...account.account,
                 arrivalDate: bookingState.arrival,
                 departureDate: bookingState.departure,
                 roomType: bookingState.room,
                 roomPrice: bookingState.roomPrice
             })
             setDisplayPopUp({bool: true, message: "booking"});
-        } else alert("No se puede realizar otra reserva");     
+        } else if(account.account.roomType !== "") setDisplayPopUp({bool: true, message: "booking", error: true}); 
+        else {
+            setDisplayPopUp({bool: true, message: "booking", error: true, invalid: true });
+        }
     }
 
     return (
@@ -84,11 +87,12 @@ const Booking = ({setDisplayPopUp }) => {
                     <Dates handleChange={handleChange} bookingState={bookingState}/>
                     <Rooms handleClick={handleClick} roomChecked={roomChecked}/>
                     {
-                        account === null ?
+                        account.account === null ?
                         <span 
                             value="Reservar" 
-                            className="booking__form__input--submit btn__main" 
-                            onClick={() => navigate("/LogIn")}>Reservar
+                            className="boton u-center-text center" 
+                            onClick={() => navigate("/LogIn")}>
+                                Reservar
                         </span>
                         :
                         <input 

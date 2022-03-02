@@ -17,7 +17,14 @@ const PopUpInfo = ({ displayPopUp, setDisplayPopUp }) => {
                     <>
                     {
                     displayPopUp.message === "booking" ?
-                        <p>Ya ha realizado una reserva</p>
+                    <>
+                        {
+                            displayPopUp.invalid ?
+                            <p>Error en el formulario</p>
+                            :
+                            <p>Ya ha realizado una reserva</p>
+                        }
+                    </> 
                     :
                         <p>Ya se ha registrado en este torneo</p>
                     }
